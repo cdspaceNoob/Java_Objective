@@ -21,14 +21,23 @@ public class Run {
 //		
 //		var_sm.viewSummary();
 		
-		BasicCode bs = new BasicCode();
-//		bs.testWhile();
-		boolean flag = bs.isPrimeNumber(7);
-		if (flag) {
-			System.out.println("소수");
-		} else {
-			System.out.println("소수 아닙니다");
-		}
+//		BasicCode bs = new BasicCode();
+////		bs.testWhile();
+//		boolean flag = bs.isPrimeNumber(7);
+//		if (flag) {
+//			System.out.println("소수");
+//		} else {
+//			System.out.println("소수 아닙니다");
+//		}
+		
+//		TestAPI01 t = new TestAPI01();
+//		t.TestAPI01();
+		
+		P162 r = new P162();
+		r.teller();
+		
+		
+		
 	}
 
 }
