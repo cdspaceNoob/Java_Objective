@@ -5,14 +5,16 @@ public class BasicCode {
 		int number = 123125;
 		int total = 0;
 		
-		while(true) {
+		boolean isStop = false;
+		
+		while(!isStop) {
 			int splitNumber = number % 10;
 			System.out.println(splitNumber);
 			total += splitNumber;
 			number = number/10;
 			
 			if(number == 0) {
-				break;
+				isStop=true;
 			}
 		}
 		System.out.println(total);
