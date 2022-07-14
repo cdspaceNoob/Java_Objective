@@ -19,5 +19,40 @@ public class BasicCode {
 		}
 		System.out.println(total);
 	}
+	
+	
+	public void testWhile02() {
+		// 소수 판별 
+		int number = 10;
+		boolean a = (number % 2) > 0;
+		boolean b = (number % 3) > 0;
+		if (a==true && b==true) {
+			System.out.println("소수입니다");
+		} else {
+			System.out.println("소수가 아닙니다");
+		}
+	}
+	
+	
+	public void testWhile01(int input) {
+		int number = input;
+		int checker = 1;
+		int counter = 0;
+		while(true) {
+
+			if(number%checker==0) {
+				counter += 1;
+			}
+			checker++;
+			if(checker==number+1) {
+				break;
+			}
+		}
+		if (counter == 2) {
+			System.out.println("소수입니다");
+		} else {
+			System.out.println("소수가 아닙니다");
+		}
+	}
 
 }

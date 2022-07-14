@@ -22,7 +22,8 @@ public class Run {
 //		var_sm.viewSummary();
 		
 		BasicCode bs = new BasicCode();
-		bs.testWhile();
+//		bs.testWhile();
+		bs.testWhile01(10);
 	}
 
 }
