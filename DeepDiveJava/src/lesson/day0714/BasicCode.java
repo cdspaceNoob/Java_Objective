@@ -34,6 +34,28 @@ public class BasicCode {
 	}
 	
 	
+	public boolean isPrimeNumber(int input) {
+		int number = input;
+		int checker = 1;
+		int counter = 0;
+		while(true) {
+
+			if(number%checker==0) {
+				counter += 1;
+			}
+			checker++;
+			if(checker==number+1) {
+				break;
+			}
+		}
+		if (counter == 2) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
+	
 	public void testWhile01(int input) {
 		int number = input;
 		int checker = 1;

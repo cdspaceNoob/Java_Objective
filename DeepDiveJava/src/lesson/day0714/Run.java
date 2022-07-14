@@ -23,7 +23,12 @@ public class Run {
 		
 		BasicCode bs = new BasicCode();
 //		bs.testWhile();
-		bs.testWhile01(10);
+		boolean flag = bs.isPrimeNumber(7);
+		if (flag) {
+			System.out.println("소수");
+		} else {
+			System.out.println("소수 아닙니다");
+		}
 	}
 
 }
