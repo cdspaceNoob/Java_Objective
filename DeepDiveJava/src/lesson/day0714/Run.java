@@ -33,10 +33,11 @@ public class Run {
 //		TestAPI01 t = new TestAPI01();
 //		t.TestAPI01();
 		
-		P162 r = new P162();
-		r.teller();
-		
-		
+//		P162 r = new P162();
+//		r.teller();
+//		
+		Banking bank = new Banking();
+		bank.openBank();
 		
 		
 		

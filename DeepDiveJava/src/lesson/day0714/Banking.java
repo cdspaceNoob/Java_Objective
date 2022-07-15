@@ -1,7 +1,9 @@
 package lesson.day0714;
 import java.util.Scanner;
+import lesson.day0715.Account;
 public class Banking {
 	public void openBank() {
+		Account account = new Account();
 		Scanner scan = new Scanner(System.in);
 		boolean isStop = false;
 		while (!isStop) {
@@ -14,13 +16,20 @@ public class Banking {
 			// 선택에 맞는 작업을 한다.
 			switch(cmd) {
 			case 1:
+				System.out.print("입금>> ");
+				account.deposit(scan.nextInt());
 				System.out.println("입금 처리.");
+				
 				break;
 			case 2:
+				System.out.print("출금>> ");
+				account.withdraw(scan.nextInt());
 				System.out.println("출금 처리.");
 				break;
 			case 3:
 				System.out.println("잔금 확인.");
+				int result = account.getBalance();
+				System.out.println(result);
 				break;
 			case 4:
 				isStop = true;
