@@ -16,18 +16,22 @@ public class LottoMachine {
 	
 	// 머신 세팅 
 	public void setBalls(LottoBall[] balls) {
-		
+		this.balls = balls;
 	}
 	
 	public LottoBall[] getBalls() {
 		return this.balls;
 	}
 	
+	public void startMachine() {
+		this.selectBalls();
+	}
+	
 	// 6개의 공 선택하기 
-	public void selectBalls() {
+	private void selectBalls() {
 		// 선택된 6개의 공 번호 출력 
 		LottoBall[] selectedBalls = new LottoBall[6];
-		for (int i = 0; i < 6-1; i++) {
+		for (int i = 0; i < 6; i++) {
 			selectedBalls[i] = this.getBall();
 		}
 		for (int i = 0; i < selectedBalls.length; i++) {
