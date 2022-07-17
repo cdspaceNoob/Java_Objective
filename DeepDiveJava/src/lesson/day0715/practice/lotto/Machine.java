@@ -9,13 +9,15 @@ public class Machine {
 	
 	// create 45 balls
 	public Ball[] insertBalls() {
-		Ball[] balls = new Ball[45];
+		Ball[] balls_45 = new Ball[45];
 		Ball ball = null;
-		for(int i=0; i<balls.length; i++) {
-			ball = new Ball(i+1);
-			balls[i] = ball;
+		int ballNumber = 1;
+		for(int i=0; i<45; i++) {
+			ball = new Ball(ballNumber);
+			balls_45[i] = ball;
+			ballNumber += 1;
 		}
-		this.balls = balls;
+		this.balls = balls_45;
 		return balls;
 	}
 	
