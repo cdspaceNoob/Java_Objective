@@ -4,9 +4,10 @@ public class Run {
 
 	public static void main(String[] args) {
 	
-		ObjectTest ot = new ObjectTest();
-		ot.compareTest2();
-		ot.compareTest3();
-		System.out.println(ot);
+		Driver driver = new Driver();
+		Vehicle vehicle = new Vehicle();
+		Bus bus = new Bus();
+		driver.drive(vehicle);
+		driver.drive(bus);
 	}
 }

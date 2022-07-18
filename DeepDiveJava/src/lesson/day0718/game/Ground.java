@@ -5,7 +5,13 @@ public class Ground {
 		Com c = new Com();
 		Player p = new Player();
 		
-		Ball[] cNumber = c.selectedBalls2();
-		String pNumber = p.getNumber();
+		Ball[] cNumber = c.getFour();
+		int[] pNumber = p.getNumber();
+		
+		for(int i=0; i<4; i++) {
+			for(int j=0; j<4; j++) {
+				cNumber
+			}
+		}
 	}
 }
