@@ -10,5 +10,5 @@ public class ColletionMain {
 	public void test1() {
 		CollectionCode cc = new CollectionCode();
 		cc.testList();
-	}
+	}/* end test1 */
 }
