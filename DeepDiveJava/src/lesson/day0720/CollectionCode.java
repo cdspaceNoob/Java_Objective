@@ -51,7 +51,9 @@ public class CollectionCode {
 		intVal = intObj.intValue();			// 원칙(unboxing) 
 		
 			// 삭제 
-		arrList.remove(3);
+		intObj = arrList.remove(3);
+		System.out.println("제거된 값은: "+intObj);
+		
 		
 		System.out.println(intVal);
 			// 크기 

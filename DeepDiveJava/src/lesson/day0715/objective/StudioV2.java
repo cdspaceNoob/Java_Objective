@@ -1,6 +1,12 @@
 package lesson.day0715.objective;
 
-public class Studio {
+import java.util.Random;
+/* V2
+ * 공 섞기
+ * 추첨 시 공이 밖으로 빠져 나오도록 코드 작성
+ * 공 번호를 오름차순으로 정렬하기
+ */
+public class StudioV2 {
 	
    /* 필
 	* private로 반환타입이 클래스 변수를 생성했습니다 
@@ -12,7 +18,7 @@ public class Studio {
 	private LottoMachine machine;
 	
 	/* 생성자 */
-	public Studio() {
+	public StudioV2() {
 		/* 
 		 * 클래스를 인스턴스로 만들 때, 초깃값을 잡아주는 생성자 영역입니다 
 		 * 같은 패키지 내에 로또머신이 존재하므로 이렇게 객체를 생성할 수 있습니다
@@ -25,7 +31,7 @@ public class Studio {
 	/* 엔트리 포인트: 메인함수 */
 	public static void main(String[] args) {
 		/* mbc라는 이름의 스튜디오 객체를 생성합니다 */
-		Studio mbc = new Studio();
+		StudioV2 mbc = new StudioV2();
 		/* 스튜디오 객체가 가지고 있는 onAir()메소드를 실행합니다 */
 		mbc.onAir();
 	}
@@ -60,7 +66,28 @@ public class Studio {
 		 * 반복문을 사용합니다
 		 */
 		int ballNumer = 1;
-		for(int i=0; i<45; i++) {
+		// false로 배열 초깃값 설정
+		boolean[] numbers = new boolean[45];
+		for(int i=0; i<46; i++) {
+			numbers[i] = false;
+		}
+		// 인덱스가 공번호, 인덱스는 랜덤으로 생성(1~45), 배열의 해당 인덱스값은 true, true면 반복
+		Random r = new Random();
+		
+		for(int j=0; j<46; j++) {
+			while(true) {
+				int index = r.nextInt(45);
+				if(!numbers[index]) {
+					continue;
+				}
+				balls[j] = new LottoBall(index+1);
+			}
+			
+			
+		}
+		
+		
+		//for(int i=0; i<45; i++) {
 			
 			/* 
 			 * 방금위에 만들어둔 로또공 클래스를 담을 공간 balls에
@@ -69,10 +96,10 @@ public class Studio {
 			 * LottoBall(여기의 숫자)는
 			 * 로또공 객체를 생성하기 위해 필요한 매개변수입니다 
 			 * 클래스 LottoBall의 생성자를 보면 ballNumber를
-			 * 매개변수로 함을 확인할 수 있습니
+			 * 매개변수로 함을 확인할 수 있습니다 
 			 */
-			balls[i] = new LottoBall(ballNumer++);	
-		}
+			//balls[i] = new LottoBall(ballNumer++);	
+		//}
 	/* 이렇게 45개의 로또공이 만들어지고, balls라는 배열에 저장됩니다
 	 * 이 배열을 리턴합니다 
 	 */
