@@ -4,7 +4,8 @@ import java.util.ArrayList;
 
 public class CollectionCode {
 	public void testList() {
-		// ArrayList: 가변형 배열 - 길이가 알아서 조절되는 
+		// ArrayList: 가변형 배열 - 길이가 알아서 조절되는 배열
+		// Collection - List의 한 형태 
 		// ArrayList arrList = new ArrayList();
 		ArrayList<Integer> arrList = new ArrayList<Integer>(); 
 		/* 
@@ -47,7 +48,7 @@ public class CollectionCode {
 		arrList.set(2, Integer.valueOf(3));	// 원칙(unboxing)
 		arrList.set(2, 3);					// 허용(auto-unboxing)
 		intObj = (Integer)arrList.get(2);
-		intVal = intObj.intValue();
+		intVal = intObj.intValue();			// 원칙(unboxing) 
 		
 			// 삭제 
 		arrList.remove(3);
@@ -56,7 +57,7 @@ public class CollectionCode {
 			// 크기 
 		for(int i=0; i<arrList.size(); i++) {
 			intObj = (Integer)arrList.get(i);
-			intVal = intObj.intValue();
+			intVal = intObj.intValue();		// 원칙(unboxing)
 			
 			System.out.println(intVal);
 		}
