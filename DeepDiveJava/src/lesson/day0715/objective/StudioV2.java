@@ -1,5 +1,6 @@
 package lesson.day0715.objective;
 
+import java.util.ArrayList;
 import java.util.Random;
 /* V2
  * 공 섞기
@@ -53,19 +54,22 @@ public class StudioV2 {
 	
 	/* 메소드 */
 	/* 반환타입이 로또공 클래스의 배열인 메소드를 정의합니다 */
-	public LottoBall[] readyBalls() {
+	public ArrayList<LottoBall> readyBalls() {
 		/*
 		 * []의 의미는 객체를 여러개 담아둘 공간을 만들겠다는 뜻입니다 
 		 * 헷갈린다면 []를 제외하고 생각해보면 간단합니다  
 		 */
-		LottoBall[] balls = new LottoBall[45];
+		ArrayList<LottoBall> balls = new ArrayList<LottoBall>();
 		
 		/* 
 		 * 클래스 로또공으로 객체를 45개 만들어야 합니다 
 		 * 하나씩 만들기엔 너무 많은 반복작업이 필요하므로
 		 * 반복문을 사용합니다
 		 */
+		
 		int ballNumer = 1;
+		
+		/*
 		// false로 배열 초깃값 설정
 		boolean[] numbers = new boolean[45];
 		for(int i=0; i<46; i++) {
@@ -84,10 +88,10 @@ public class StudioV2 {
 			}
 			
 			
-		}
+		}*/
 		
 		
-		//for(int i=0; i<45; i++) {
+		for(int i=0; i<45; i++) {
 			
 			/* 
 			 * 방금위에 만들어둔 로또공 클래스를 담을 공간 balls에
@@ -98,8 +102,8 @@ public class StudioV2 {
 			 * 클래스 LottoBall의 생성자를 보면 ballNumber를
 			 * 매개변수로 함을 확인할 수 있습니다 
 			 */
-			//balls[i] = new LottoBall(ballNumer++);	
-		//}
+			balls.add(new LottoBall(ballNumer++)) ;	
+		}
 	/* 이렇게 45개의 로또공이 만들어지고, balls라는 배열에 저장됩니다
 	 * 이 배열을 리턴합니다 
 	 */
