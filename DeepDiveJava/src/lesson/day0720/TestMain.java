@@ -45,7 +45,7 @@ public class TestMain {
 	
 	public void test4() {
 		DateTimeService dts = new DateTimeService();
-		String now = dts.getDateTime(DateTimeService.DATE_ONLY);
+		String now = dts.getDateTimeV2(DateTimeServiceType.DATE_TIME);
 		System.out.print("new "+now);
 		
 	}
