@@ -66,19 +66,21 @@ public class StreamCode {
 		File fromFile = new File("./Abc1115.csv");
 		File toFile = new File("./test.txt");
 		
-		// 파일에서 내용 읽어들이는 객체 만들기. 
+		// 파일에서 내용 읽어들이는 스트림 생성. 
 		FileReader frFrom = new FileReader(fromFile);	
-		// 내용을 한 줄씩 읽어들이기. 
+		// 내용을 읽어들일 스트림 생성. 
 		BufferedReader brFrom = new BufferedReader(frFrom); 
 		
-		// 내용을 작성하는 객체 만들기.
+		// 내용을 작성하는 스트림 생성.
 		FileWriter fwFrom = new FileWriter(toFile);
-		// 작성한 내용을 내보내는 객체 만들기. 
+		// 작성한 내용을 내보내는 스트림 생성. 
 		PrintWriter pwFrom = new PrintWriter(fwFrom);
 		
 		String line = null;
 		
+		// 내용을 읽어들이는 스트림에서 한 줄씩 읽는 메소드 선택.
 		while((line=brFrom.readLine())!=null){
+			// 내용을 내보내는 스트림에서 내용을 내보낸 후 한 줄을 띄우는 메소드 선택. 
 			pwFrom.println(line);
 		}
 		frFrom.close();
