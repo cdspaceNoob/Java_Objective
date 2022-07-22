@@ -60,6 +60,7 @@ public class StreamCode {
 		fw.close();
 	}/* end wirteFile() */
 	
+	
 	public void readAndWriteFile() throws IOException {
 		// 읽을 파일 정하기. 
 		File fromFile = new File("./Abc1115.csv");
@@ -67,14 +68,13 @@ public class StreamCode {
 		
 		// 파일에서 내용 읽어들이는 객체 만들기. 
 		FileReader frFrom = new FileReader(fromFile);	
-		
-		// 내용을 작성하는 객체 만들기 
-		FileWriter fwFrom = new FileWriter(toFile);
-		PrintWriter pwFrom = new PrintWriter(fwFrom);
-		
-		
 		// 내용을 한 줄씩 읽어들이기. 
 		BufferedReader brFrom = new BufferedReader(frFrom); 
+		
+		// 내용을 작성하는 객체 만들기.
+		FileWriter fwFrom = new FileWriter(toFile);
+		// 작성한 내용을 내보내는 객체 만들기. 
+		PrintWriter pwFrom = new PrintWriter(fwFrom);
 		
 		String line = null;
 		
@@ -85,8 +85,6 @@ public class StreamCode {
 		fwFrom.close();
 		pwFrom.close();
 		brFrom.close();
-		
-		
 	}/* end readAndWriteFile*/
 	
 	
