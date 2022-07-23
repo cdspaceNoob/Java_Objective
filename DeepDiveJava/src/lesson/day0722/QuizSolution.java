@@ -122,6 +122,18 @@ public class QuizSolution {
 	
 	
 	public void solveQuiz4() {
+		ArrayList<Student> quiz4 = new ArrayList<Student>();
+		for (int i=0; i<testData.size(); i++) {
+			if(testData.get(i).getLocalCode()!="C") {
+				quiz4.add(testData.get(i));
+			}
+		}
+		
+		int count = 0;
+		int total = 0;
+		for (int i=0; i<quiz4.size(); i++) {
+			
+		}
 		
 	}/* end solveQuiz4 */
 	
