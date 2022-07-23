@@ -23,9 +23,11 @@ public class StudioV2 {
 	}
 	
 	public ArrayList<LottoBall> readyBalls() {
+		/* 45개의 LottoBall객체가 담길 ArrayList 생성 */ 
 		ArrayList<LottoBall> balls = new ArrayList<LottoBall>();
-		int ballNumber = 1;
+		//int ballNumber = 1;
 		for(int i=0;i<45;i++) {
+			/* LottoBall 생성자를 호출하여 번호를 부여하고 balls에 추가 */
 			balls.add(new LottoBall(i+1));
 			//ballNumber = ballNumber + 1;
 		}
