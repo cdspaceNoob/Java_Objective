@@ -86,7 +86,11 @@ public class LottoMachine {
 		return selectedBalls;
 	}
 	
-	
+	/* 
+	 * 기존에는 배열에서 중복으로 객체를 뽑는 일이 없도록 해야 했지만 
+	 * 이제는 객체를 삭제해주고, 나머지 크기 범위 안에서 뽑기를 하므로
+	 * isSelected의 존재 의미는 없다
+	 */
 	private LottoBall getBall() {
 		LottoBall ball = null;
 		Random r = new Random();
