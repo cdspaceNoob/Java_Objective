@@ -1,16 +1,14 @@
 package test;
 
 public class Point {
+	
+	/* field */
 	private int x;
 	private int y;
 	
+	/* constructor */
 	
-	public void equals() {
-		
-	}
+	/* method */
 	
-	public String toString() {
-		return null; 
-		
-	}
+	
 }

@@ -7,10 +7,13 @@ package lesson.extra;
 public class SingleTon {
 // 내부적으로만 사용할 껍데기 하나 만들어 놓고 
 	private static SingleTon singleObj;
+//	private static SingleTon singleObj = new SingleTon();
+// 위 또는 아래를 사용하는 게 좋아보인다 
 	
 // 외부에서 생성자 접근 안 되도록 만든다 
-//	private static SingleTon singleObj = new SingleTon();
 	private SingleTon() {
+//		생성자 내에서 자기 자신의 객체를 생성하는 코드는 어색하다 
+//		singleObj = new SingleTon();
 	}
 	
 // 이 객체가 존재하지 않을 때 하나만 존재할 수 있도록 만든다 	
