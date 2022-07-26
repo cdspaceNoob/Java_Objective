@@ -6,4 +6,5 @@ public class Judge {
 	
 	/* 볼 배합 비교 로직 */
 	/* 비교 결과 출력 */
+	
 }
