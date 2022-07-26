@@ -13,6 +13,15 @@ public class TestMain {
 		tm.test1();
 	}
 	
+	public void test4() {
+		Person kim = new Student();
+	}
+	
+	
+	public void test2() {
+		System.out.println(this.age);	// this는 객체가 생성될 때 생성된다 
+	}
+	
 	public static void test1() {
 		TestMain tm2 = new TestMain();
 		
@@ -20,4 +29,14 @@ public class TestMain {
 		System.out.println(TestMain.firstname);
 		System.out.println(tm2.firstname);
 	}
+	
+	
+	public void test3() {
+		int a = 10;
+		boolean result = a > 10 ? true : false;
+		String resultStr = a > 10? "true":"false";
+		
+	}
+	
+	
 }
