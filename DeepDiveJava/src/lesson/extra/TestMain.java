@@ -1,4 +1,7 @@
 package lesson.extra;
+
+import java.util.ArrayList;
+
 // static에는 어떻게든 접근할 수 있지만 instance에는 객체를 생성하여 접근해야 한다 
 public class TestMain {
 	private int age;
@@ -35,6 +38,23 @@ public class TestMain {
 		int a = 10;
 		boolean result = a > 10 ? true : false;
 		String resultStr = a > 10? "true":"false";
+		
+	}
+	
+	public void test5() {
+		/* not generic */
+		ArrayList list = new ArrayList(); 
+		list.add(Integer.valueOf(1));
+		list.add(new String("2"));
+		
+		Integer i = (Integer)list.get(0);
+		
+		/* generic case */
+		ArrayList<Integer> intList = new ArrayList<Integer>();
+		intList.add(Integer.valueOf(1));
+		intList.add(3);					// autoBoxing (int -> Integer)
+		//intList.add(new String("2")); // String은 거른다
+		int intVal = intList.get(0); 	// autoUnboxing(Integer -> int)
 		
 	}
 	
