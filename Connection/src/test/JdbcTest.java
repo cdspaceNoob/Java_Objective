@@ -57,8 +57,8 @@ public class JdbcTest {
     	boolean flag = false;
     	String[] temp = data.split(",");
     	
-    	String sql = "insert into gisa values("+temp[0]+", "+temp[1]+", "+temp[2]+", "+temp[3]+", "+temp[4]+ ","+Integer.parseInt(temp[5].trim())
-    				+","+Integer.parseInt(temp[6].trim())+","+Integer.parseInt(temp[7])+")";
+    	String sql = "insert into gisa values("+Integer.parseInt(temp[0])+", "+temp[1]+", "+Integer.parseInt(temp[2].trim())+", "+Integer.parseInt(temp[3].trim())+", "+Integer.parseInt(temp[4].trim())+ ","+Integer.parseInt(temp[5].trim())
+    				+","+Integer.parseInt(temp[6].trim())+","+Integer.parseInt(temp[7].trim())+")";
     	Connection con = this.getConnection();  
     	Statement stmt = con.createStatement(); 
     	int affectedCount = stmt.executeUpdate(sql);
@@ -112,12 +112,15 @@ public class JdbcTest {
 //		}		JDBCTest test = new JDBCTest();
 		
 		JdbcTest test = new JdbcTest();
-		
+		String data = "990001,addx, 17, 29, 16, 49, 43,154,C,A,C";
 		try {
-			test.connectMaria();
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+//			test.connectMaria();
+			boolean flag = test.InsertData(data);
+			if(flag) {
+				System.out.println("삽입완료");
+			} else {
+				System.out.println("시일패애");
+			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
