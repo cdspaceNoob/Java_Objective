@@ -1,5 +1,7 @@
 package equals;
 
+import java.util.Objects;
+
 public class Toy {
 	private String name;
 	private int price;
@@ -15,10 +17,17 @@ public class Toy {
 	public boolean equals(Object obj) {
 		boolean flag = false;
 		if(obj instanceof Toy) {
-			if(((Toy) obj).name != null && ((Toy) obj).name == this.name) {
-				flag = true;
+			if(		((Toy) obj).name != null && ((Toy) obj).name == this.name &&
+					((Toy) obj).price == this.price &&
+					((Toy) obj).manufacturing != null && ((Toy) obj).manufacturing == this.manufacturing){
+				return true;
 			}
 		}
-		return flag;
+		return false;
 	}/* end equals */
+	
+	@Override
+	public int hashCode() {
+		return Objects.hash(name, price, manufacturing);
+	}
 }
