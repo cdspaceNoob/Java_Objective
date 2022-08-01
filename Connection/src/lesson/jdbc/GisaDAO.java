@@ -1,11 +1,31 @@
 package lesson.jdbc;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
 public class GisaDAO {
+	
+	public int select(String q) throws SQLException {
+		int result = 0;
+		Connection con = ConnectionManager.getConnection();
+		PreparedStatement statement = con.prepareStatement(q);
+		ResultSet rs = statement.executeQuery();
+		if(rs.next()) {
+			result = rs.getInt(1);
+		}
+		rs.close();
+		statement.close();
+		return result;
+	}
+	
+	
+	
+	
+	
 	
 	/* 개별 객체를 받을 때 insert 방식 */
     public boolean InsertData(StudentVO vo) throws SQLException {
@@ -37,7 +57,7 @@ public class GisaDAO {
     	/* 길 닦기 */
     	// 여러 개의 데이터를 반복문으로 넣을 때는 반복문 안에서 길을 닦아주자 
 
-    	/* 하나씩 보낼 길바닥 하나하나를 미리 명시하기 */
+    	/* 통로 미리 명시하기 */
     	Statement stmt = null;
     	/* 쿼리 던지기 */
     	for(StudentVO vo : list) {
@@ -93,7 +113,7 @@ public class GisaDAO {
     }/* end DeleteData */
     
     
-    public boolean DeleteAll() throws SQLException {
+    public boolean DeleteData() throws SQLException {
     	boolean flag = false;
     	
     	/* 던질 쿼리 작성 */

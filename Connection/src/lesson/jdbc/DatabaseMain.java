@@ -13,16 +13,16 @@ public class DatabaseMain {
 		DatabaseMain main = new DatabaseMain();
 		/* 1. 파일의 데이터를 쭈욱 받아 놓고(MAIN) // 2. insert 쿼리를 사용한다(DAO) */
 		//ArrayList<StudentVO> list = main.getFileData(); 예외 발생하므로 try-catch
-		try {
-			ArrayList<StudentVO> list = main.getFileData();
-			main.testInsert(list);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+//		try {
+//			ArrayList<StudentVO> list = main.getFileData();
+//			main.testInsert(list);
+//		} catch (IOException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		} catch (SQLException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
 		
 		/* insert into */
 //		main.testInsert();
@@ -56,13 +56,49 @@ public class DatabaseMain {
 //			// TODO Auto-generated catch block
 //			e.printStackTrace();
 //		}
+		try {
+			main.solve();
+			main.solve2();
+			main.solve3();
+			main.solve4();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}	
 		
+		
+	/* methods */
+	
+	public void solve() throws SQLException {
+		Service s = new Service();
+		int rs = s.solution();
+		System.out.println("result: "+rs);
 	}
+	
+	public void solve2() throws SQLException {
+		Service s = new Service();
+		int rs = s.solution2();
+		System.out.println("result: "+rs);
+	}
+	
+	public void solve3() throws SQLException {
+		Service s = new Service();
+		int rs = s.solution3();
+		System.out.println("result: "+rs);
+	}
+	
+	public void solve4() throws SQLException {
+		Service s = new Service();
+		int rs = s.solution4();
+		System.out.println("result: "+rs);
+	}
+	
+	
 	
 	private ArrayList<StudentVO> getFileData() throws IOException  {
 		// TODO Auto-generated method stub
-		ArrayList<StudentVO> list = null;
-		list = new ArrayList<StudentVO>();
+		ArrayList<StudentVO> list = new ArrayList<StudentVO>();
 		// 파일의 기본 정보만 가진 상태(파일 겉면). 예: 이름, 확장자, 크기, 위치 등... 
 		File file = new File("./Abc1115.csv");
 		
@@ -132,7 +168,7 @@ public class DatabaseMain {
 	
 	public void testDeleteAll() throws SQLException {
 		GisaDAO dao = new GisaDAO();
-		boolean flag = dao.DeleteAll(); // insert와 다르게 이번엔 main에서 예외 처리
+		boolean flag = dao.DeleteData(); // insert와 다르게 이번엔 main에서 예외 처리
 		if(flag) {
 			System.out.println("Query OK");
 		} else {

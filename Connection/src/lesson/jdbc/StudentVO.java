@@ -15,20 +15,29 @@ public class StudentVO {
 	private String locCode;
 	
 	/* constructor */
-	public StudentVO(String data) {
-		String[] temp = data.split(",");
-			stdNo = Integer.parseInt(temp[0].trim());
-			email = "'"+temp[1].trim()+"'";
-			kor = Integer.parseInt(temp[2].trim());
-			math = Integer.parseInt(temp[3].trim());
-			eng = Integer.parseInt(temp[4].trim());
-			sci = Integer.parseInt(temp[5].trim());
-			hist = Integer.parseInt(temp[6].trim());
-			total = Integer.parseInt(temp[7].trim());
-			mgrCode = "'"+temp[8].trim()+"'";
-			accCode = "'"+temp[9].trim()+"'";
-			locCode = "'"+temp[10].trim()+"'";
+	
+	public StudentVO() {
+		
 	}
+	
+	public StudentVO(String data) {
+		
+	}
+	
+//	public StudentVO(String data) {
+//		String[] temp = data.split(",");
+//			stdNo = Integer.parseInt(temp[0].trim());
+//			email = "'"+temp[1].trim()+"'";
+//			kor = Integer.parseInt(temp[2].trim());
+//			math = Integer.parseInt(temp[3].trim());
+//			eng = Integer.parseInt(temp[4].trim());
+//			sci = Integer.parseInt(temp[5].trim());
+//			hist = Integer.parseInt(temp[6].trim());
+//			total = Integer.parseInt(temp[7].trim());
+//			mgrCode = "'"+temp[8].trim()+"'";
+//			accCode = "'"+temp[9].trim()+"'";
+//			locCode = "'"+temp[10].trim()+"'";
+//	}
 	
 	/* Getter & Setter */
 	public int getStdNo() {
