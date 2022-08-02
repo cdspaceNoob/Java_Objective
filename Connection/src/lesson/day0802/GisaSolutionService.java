@@ -9,19 +9,20 @@ public class GisaSolutionService {
 	public void solveQuiz04() {
 		GisaDAO dao = new GisaDAO();
 		try {
-			ArrayList<StudentVO> list = dao.selectQuiz04Data("a","b");
+			ArrayList<StudentVO> list = dao.selectQuiz04Data("A","B");
 			//StudentVO vo = null;
 			//int total = 0;
 			//int count = 0;
 			//int codeVal = 0;
 
 			
-			int point = 20; 
+			
 			int count = 0;
 			for(StudentVO vo : list) {
-				if(vo.getAccCode().equals("A")) {
+				int point = 15; 
+				if(vo.getLocCode().equals("A")) {
 					point = 5;
-				}else if(vo.getAccCode().equals("B")) {
+				}else if(vo.getLocCode().equals("B")) {
 					point = 10;
 				}
 				if(vo.getKor()+point>=50) {
@@ -71,14 +72,14 @@ public class GisaSolutionService {
 			
 			
 			int sum = 0;
-			int point = 20; 
 			for(StudentVO vo : list) {
+				int point = 20; 
 				if(vo.getAccCode().equals("A")) {
 					point = 5;
 				}else if(vo.getAccCode().equals("B")) {
-					point = 10;
+					point = 15;
 				}
-				sum = sum + vo.getTotal();
+				sum = sum + vo.getTotal() + point;
 			}//end for
 			System.out.println("Sum of Records is.. "+sum);
 			
@@ -110,7 +111,7 @@ public class GisaSolutionService {
 		/* 문제 해결을 위한 데이터셋을 DAO에 요청 */
 		GisaDAO dao = new GisaDAO();
 		try {
-			ArrayList<StudentVO> list = dao.selectQuiz01Data("b");
+			ArrayList<StudentVO> list = dao.selectQuiz01Data("B");
 			//System.out.println(list.size()); // 크기 확인 
 			
 			/* 1번 문제: 국어+영어 점수를 ASC로 정렬하시오 */
@@ -151,8 +152,10 @@ public class GisaSolutionService {
 	/* 문제 해결을 위한 데이터셋을 DAO에 요청 */
 		GisaDAO dao = new GisaDAO();
 		try {
-			ArrayList<StudentVO> list = dao.selectQuiz01Data("b"); 
+			ArrayList<StudentVO> list = dao.selectQuiz01Data("B"); 
 			// list 처리 로직을 사용(Collections methods)
+			
+			/* 정렬(sorting) 클래스 */
 			Collections.sort(list, new StudentComparator());
 			//this.printList(list);
 			System.out.println("fifth's Student No is ... "+list.get(4).getStdNo());
@@ -174,7 +177,7 @@ public class GisaSolutionService {
 	/* 문제 해결을 위한 데이터셋을 DAO에 요청 */
 		GisaDAO dao = new GisaDAO();
 		try {
-			ArrayList<StudentVO> list = dao.selectQuiz01Data("b");
+			ArrayList<StudentVO> list = dao.selectQuiz01Data("B");
 			//System.out.println(list.size()); // 크기 확인 
 			
 			/* 1번 문제: 국어+영어 점수를 ASC로 정렬하시오 */

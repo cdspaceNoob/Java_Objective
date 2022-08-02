@@ -15,7 +15,7 @@ public class GisaDAO {
 	public ArrayList<StudentVO> selectQuiz04Data(String a, String b) throws SQLException {
 		// 쿼리 작성 
 		//String sql = "select * from gisa where acccode != 'c'";
-		String sql = "select * from gisa where acccode = '?' or '?'";
+		String sql = "select * from gisa where acccode = ? or acccode = ?";
 		
 		// 데이터를 받을 ArrayList 만들기
 		ArrayList<StudentVO> list = new ArrayList<StudentVO>();
