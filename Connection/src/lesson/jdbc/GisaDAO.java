@@ -20,9 +20,7 @@ public class GisaDAO {
 		rs.close();
 		statement.close();
 		return result;
-	}
-	
-	
+	}/* select */
 	
 	
 	
@@ -45,6 +43,9 @@ public class GisaDAO {
     	}
     	return flag;
     }/* end InsertData */
+    
+    
+    
     
     /* 객체 리스트를 받을 때 insert 방식 */
     public boolean InsertData(ArrayList<StudentVO> list) throws SQLException {
@@ -81,7 +82,9 @@ public class GisaDAO {
     	
     	/* return */
     	return flag;
-    }
+    }/* end InsertData */
+    
+    
     
     
     public boolean DeleteData(int stdNo) throws SQLException {
@@ -113,6 +116,8 @@ public class GisaDAO {
     }/* end DeleteData */
     
     
+    
+    
     public boolean DeleteData() throws SQLException {
     	boolean flag = false;
     	
@@ -140,6 +145,8 @@ public class GisaDAO {
     	
     	return flag;
     }/* end DeleteAll */
+    
+    
     
     
 }/* end of this class */
