@@ -108,7 +108,8 @@ public class StudentVO {
 	public int getQuiz01Data() {
 		return this.kor + this.eng;
 	}
-	
+
+
 	@Override
 	public String toString() {
 		return "stdno="+this.getStdNo()+", "+"Quiz01 result ="+this.getQuiz01Data();

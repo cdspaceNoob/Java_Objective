@@ -2,7 +2,9 @@ package lesson.day0802;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 public class ConnectionManager {
 	
@@ -27,4 +29,33 @@ public class ConnectionManager {
 		}
 		return con;
 	}/* getConnection() */
+	
+	public static void CloseConnection(ResultSet rs, Statement stmt, Connection con) {
+		if(rs!=null) {
+			try {
+				rs.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
+		if(stmt != null) {
+			try {
+				stmt.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
+		if(con != null) {
+			try {
+				con.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+	}/* CloseConnection */
 }
