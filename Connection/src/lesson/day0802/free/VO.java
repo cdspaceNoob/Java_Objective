@@ -9,12 +9,13 @@ public class VO {
 	private int math;
 	private int sci;
 	private int hist;
+	private int total;
 	private String accCode;
 	private String mgrCode;
 	private String locCode;
 	
 	
-	public VO(int stdNo, String email, int kor, int eng, int math, int sci, int hist, 
+	public VO(int stdNo, String email, int kor, int eng, int math, int sci, int hist, int total,
 			String accCode, String mgrCode, String locCode) {
 		this.stdNo = stdNo;
 		this.email = email;
@@ -23,6 +24,7 @@ public class VO {
 		this.math = math;
 		this.sci = sci;
 		this.hist = hist;
+		this.total = total;
 		this.accCode = accCode;
 		this.mgrCode = mgrCode;
 		this.locCode = locCode;
@@ -85,6 +87,14 @@ public class VO {
 	public void setHist(int hist) {
 		this.hist = hist;
 	}
+	
+	public int getTotal() {
+		return total;
+	}
+
+	public void setTotal(int total) {
+		this.total = total;
+	}
 
 	public String getAccCode() {
 		return accCode;
@@ -114,6 +124,4 @@ public class VO {
 		return this.kor + this.eng;
 	}
 	
-	
-	
-}
+}/* END OF VO */
