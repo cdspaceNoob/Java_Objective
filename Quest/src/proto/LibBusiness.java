@@ -5,6 +5,12 @@ import java.sql.SQLException;
 public class LibBusiness {
 	
 	
+	// 도서 대출 가능여부 확인
+	public void chekcer(int bookNo) throws SQLException {
+		ListDAO ldao = new ListDAO();
+		ldao.checkBook(bookNo);
+	}
+	
 	// 도서 대출 
 	public void Borrow(int stdNo, int bookNo) throws SQLException {
 		ListDAO ldao = new ListDAO();
@@ -21,6 +27,7 @@ public class LibBusiness {
 			e.printStackTrace();
 		}
 	}
+	
 	
 	
 	//0) 현재 대출중인 책의 정보, 대출자, 반납일, 연체여부에 대한 정보를 제공

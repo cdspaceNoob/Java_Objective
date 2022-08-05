@@ -7,13 +7,41 @@ import java.util.ArrayList;
 
 public class ListDAO {
 	
-	// 도서 대출 
-	public boolean insertList(int stdNo, int bookNo) throws SQLException {
+	// 도서 대출 가능 여부 확인 
+	public boolean checkBook(int bookNo) throws SQLException {
 		boolean flag = false;
 		
 		Connection con = ConnectionManager.getConnection();
+		String sql = "select count(bookNo) as nowOut from list where bookNo = ?;";
 		
-		// 1. 장부에 기록하기 
+		PreparedStatement pstmt = con.prepareStatement(sql);
+		pstmt.setInt(1, bookNo);
+		
+		int affectedCount = 0;
+		
+		affectedCount = pstmt.executeUpdate();
+		
+		if(affectedCount < 3) {
+			flag = true;
+			System.out.println("대출 가능한 도서입니다");
+		}
+		
+		pstmt.close();
+		con.close();
+		
+		return flag;
+	}
+	
+	
+	// 도서 대출 
+	public boolean insertList(int stdNo, int bookNo) throws SQLException {
+		boolean flag = false;
+		boolean chekcer = false;
+		
+		if(this.checkBook(bookNo) == true) {
+		Connection con = ConnectionManager.getConnection();
+		
+		// 장부에 기록하기 
 		String sql = "insert into list(stdNo, bookNo, dateOut, dateIn, datecheck) values(?, ?, now(), date_add(now(), interval 7 day), NULL);";
 		
 		PreparedStatement pstmt = con.prepareStatement(sql);
@@ -32,9 +60,13 @@ public class ListDAO {
 		con.close();
 		
 		return flag;
+		} else {
+			System.out.println("해당 도서는 현재 대출 불가능합니다 ");
+		}
+		return flag;
 	}
 	
-	
+	// 도서 반납 
 	public boolean giveBack(int bookNo) throws SQLException {
 		boolean flag = false;
 		

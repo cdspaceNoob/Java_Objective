@@ -87,6 +87,13 @@ public class LibMain {
 		/* 반납 */ 
 		main.giveBack(13);
 		
+		/* 대출 가능 확인 */
+		try {
+			main.checker(13);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		
 	
@@ -127,6 +134,12 @@ public class LibMain {
 			e.printStackTrace();
 		}
 	}// Load BookVO
+	
+	// 대출 가능한지 확인
+	public void checker(int bookNo) throws SQLException {
+		LibBusiness lb = new LibBusiness();
+		lb.chekcer(bookNo);
+	}
 	
 	// 대출 
 	public void borrowBook(int stdNo, int bookNo) throws SQLException {
