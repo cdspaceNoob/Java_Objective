@@ -2,17 +2,55 @@ package proto;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Iterator;
 
 public class ListDAO {
+	
+
+//	public void setList() throws SQLException {
+//		Connection con = ConnectionManager.getConnection();
+//		
+//		String sqlSelct = "select stdNo from list";
+//		PreparedStatement pstmtSelect = con.prepareStatement(sqlSelct);
+////		pstmtSelect.setString(1, "stdNo");
+//		ResultSet rs = pstmtSelect.executeQuery();
+//		ArrayList list = new ArrayList();
+//		int result = 0;
+//		
+//		while(rs.next()) {
+//			result = rs.getInt(1);
+//			list.add(result);
+//		}
+//		
+//		System.out.print(list);
+//		
+//		String sqlInsert = "insert into list(stdNo, bookNo, dateOut, dateIn) values(?, ?, ?, ?)";
+//		PreparedStatement pstmtInsert = con.prepareStatement(sqlInsert);
+//		Iterator it = list.iterator();
+//		
+//		while(it.hasNext()) {
+//			Collections.shuffle(list);
+//			pstmtInsert.setInt(1, (int)list.get(1));
+//			
+////			pstmt.setInt(2, bookNo);
+////			pstmt.setString(3, dateOut);
+////			pstmt.setString(4, dateIn);
+//			
+//		}
+//	}
+	
+	
 	
 	// 도서 대출 가능 여부 확인 
 	public boolean checkBook(int bookNo) throws SQLException {
 		boolean flag = false;
 		
 		Connection con = ConnectionManager.getConnection();
-		String sql = "select count(bookNo) as nowOut from list where bookNo = ?;";
+		String sql = "select count(bookNo) as nowOut from list where bookNo = ? and datecheck is not null;";
 		
 		PreparedStatement pstmt = con.prepareStatement(sql);
 		pstmt.setInt(1, bookNo);
@@ -21,9 +59,8 @@ public class ListDAO {
 		
 		affectedCount = pstmt.executeUpdate();
 		
-		if(affectedCount < 3) {
+		if(affectedCount > 0) {
 			flag = true;
-			System.out.println("대출 가능한 도서입니다");
 		}
 		
 		pstmt.close();
@@ -61,7 +98,7 @@ public class ListDAO {
 		
 		return flag;
 		} else {
-			System.out.println("해당 도서는 현재 대출 불가능합니다 ");
+			System.out.println("해당 도서는 현재 대출 불가능합니다");
 		}
 		return flag;
 	}
@@ -92,10 +129,29 @@ public class ListDAO {
 	
 	
 	//0) 현재 대출중인 책의 정보, 대출자, 반납일, 연체여부에 대한 정보를 제공
-	public ArrayList<ListDAO> getData00(){
-		String sql = "";
-		return null;
-	}
+//	public ArrayList getData00() throws SQLException{
+//		String sql = "select b.bookNo, b.title, b.author, b.price, b.inDate, l.dateIn, l.datecheck"
+//				+ "from book b, list l"
+//				+ "where l.dateCheck is null";
+//		Connection con = ConnectionManager.getConnection();
+//		PreparedStatement stmt = con.prepareStatement(sql);
+//		ResultSet rs = stmt.executeQuery();
+//		int bookNo = 0;
+//		String title = "";
+//		String au
+//		while(rs.next()) {
+//			list.add(rs.getInt(1));
+//			list.add(rs.getString(2));
+//			list.add(rs.getNString(3));
+//			list.add(rs.getInt(4));
+//			list.add(rs.getString(5));
+//			list.add(rs.getString(6));
+//			list.add(rs.getString(7));
+//			List.add(list);
+//			}
+//		System.out.println(List);
+//		return List;
+//	}
 	
 	//1) 대출 도서 상위 5위에 대한 정보
 	public ArrayList<ListDAO> getData01(){

@@ -85,22 +85,31 @@ public class LibMain {
 		/* 대출 끝 */
 		
 		/* 반납 */ 
-		main.giveBack(13);
+//		main.giveBack(4);
+//		main.giveBack(1);
+//		main.giveBack(6);
+//		main.giveBack(5);
+//		main.giveBack(7);
+//		main.giveBack(8);
+//		main.giveBack(9);
+//		main.giveBack(10);
+//		main.result00();
 		
 		/* 대출 가능 확인 */
-		try {
-			main.checker(13);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+//		try {
+//			main.checker(13);
+//		} catch (SQLException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
 		
 		
 	
 	}
-		
-		
-	/* methods */
+
+	
+	
+	// 기본 테이블 로드 
 	public void stLoader() {
 		LoadFile fl = new LoadFile();
 		try {
@@ -118,6 +127,7 @@ public class LibMain {
 		}
 	}// Load StudentVO
 	
+	// 기본 테이블 로드 
 	public void bkLoader() {
 		LoadFile fl = new LoadFile();
 		try {
@@ -135,29 +145,41 @@ public class LibMain {
 		}
 	}// Load BookVO
 	
-	// 대출 가능한지 확인
+	// 기초 정보 입력(랜덤 500개)
+	public void setList() {
+		
+	}
+	
+	
+	/* methods */
+	// 대출 가능여부 확인 기능 
 	public void checker(int bookNo) throws SQLException {
 		LibBusiness lb = new LibBusiness();
 		lb.chekcer(bookNo);
 	}
 	
-	// 대출 
+	// 대출 기능 
 	public void borrowBook(int stdNo, int bookNo) throws SQLException {
 		LibBusiness lb = new LibBusiness();
 		lb.Borrow(stdNo, bookNo);
 	}
 	
-	// 반납
+	// 반납 기능 
 	public void giveBack(int bookNo) {
 		LibBusiness lb = new LibBusiness();
 		lb.giveBack(bookNo);
 	}
 	
 	
-	public void result00() {
-		LibBusiness lb = new LibBusiness();
-		lb.solution00();
-	}
+//	public void result00() {
+//		LibBusiness lb = new LibBusiness();
+//		try {
+//			lb.solution00();
+//		} catch (SQLException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//	}
 	
 	public void result01() {
 		LibBusiness lb = new LibBusiness();
