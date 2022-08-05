@@ -34,6 +34,18 @@ public class ListDAO {
 		return flag;
 	}
 	
+	
+	public boolean insertReturn(int bookNo) {
+		boolean flag = false;
+		
+		Connection con = ConnectionManager.getConnection();
+		String sql = "insert into list(datecheck) values(now());";
+		
+		return flag;
+	}
+	
+	
+	
 	//0) 현재 대출중인 책의 정보, 대출자, 반납일, 연체여부에 대한 정보를 제공
 	public ArrayList<ListDAO> getData00(){
 		String sql = "";
