@@ -19,6 +19,13 @@ public class LibMain {
 		main.result04();
 		main.result05();
 		main.result06();
+		
+		try {
+			main.borrowBook(20162741, 3);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 		
 		
@@ -56,6 +63,12 @@ public class LibMain {
 			e.printStackTrace();
 		}
 	}// Load BookVO
+	
+	// 대출 
+	public void borrowBook(int stdNo, int bookNo) throws SQLException {
+		LibBusiness lb = new LibBusiness();
+		lb.Borrow(stdNo, bookNo);
+	}
 	
 	
 	public void result00() {

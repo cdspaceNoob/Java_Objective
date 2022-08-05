@@ -9,7 +9,7 @@ public class BookDAO {
 		public boolean insertBookData(ArrayList<BookVO> list) throws SQLException {
 			boolean flag = false;
 			int affectedCount = 0;
-			Connection con = ConnectionManager.getStConnection();
+			Connection con = ConnectionManager.getConnection();
 			Statement stmt = null;
 			
 			for(BookVO vo : list) {

@@ -12,7 +12,7 @@ public class StudentDAO {
 	public boolean insertStData(ArrayList<StudentVO> list) throws SQLException {
 		boolean flag = false;
 		int affectedCount = 0;
-		Connection con = ConnectionManager.getStConnection();
+		Connection con = ConnectionManager.getConnection();
 		Statement stmt = null;
 		
 		for(StudentVO vo : list) {

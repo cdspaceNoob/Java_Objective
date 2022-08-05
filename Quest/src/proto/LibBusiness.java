@@ -1,9 +1,18 @@
 package proto;
 
+import java.sql.SQLException;
+
 public class LibBusiness {
+	
+	public void Borrow(int stdNo, int bookNo) throws SQLException {
+		ListDAO ldao = new ListDAO();
+		ldao.insertList(stdNo, bookNo);
+	}
+	
+	
 	//0) 현재 대출중인 책의 정보, 대출자, 반납일, 연체여부에 대한 정보를 제공
 	public void solution00() {
-//		BookDAO bdao = new BookDAO();
+		BookDAO bdao = new BookDAO();
 //		StudentDAO stdao = new StudentDAO();
 		ListDAO ldao = new ListDAO();
 	}// end solution00
