@@ -63,7 +63,7 @@ public class LibMain {
 //		} catch (SQLException e) {
 //			// TODO Auto-generated catch block
 //			e.printStackTrace();
-//		}
+//		} 
 //		try {
 //			main.borrowBook(20212863, 9);
 //		} catch (SQLException e) {
@@ -181,35 +181,35 @@ public class LibMain {
 //		}
 //	}
 	
-	public void result01() {
-		LibBusiness lb = new LibBusiness();
-		lb.solution01();
-	}
-	
-	public void result02() {
-		LibBusiness lb = new LibBusiness();
-		lb.solution02();
-	}
-	
-	public void result03() {
-		LibBusiness lb = new LibBusiness();
-		lb.solution03();
-	}
-	
-	public void result04() {
-		LibBusiness lb = new LibBusiness();
-		lb.solution04();
-	}
-
-	public void result05() {
-		LibBusiness lb = new LibBusiness();
-		lb.solution05();
-	}
-	
-	public void result06() {
-		LibBusiness lb = new LibBusiness();
-		lb.solution06();
-	}// end result
+//	public void result01() {
+//		LibBusiness lb = new LibBusiness();
+//		lb.solution01();
+//	}
+//	
+//	public void result02() {
+//		LibBusiness lb = new LibBusiness();
+//		lb.solution02();
+//	}
+//	
+//	public void result03() {
+//		LibBusiness lb = new LibBusiness();
+//		lb.solution03();
+//	}
+//	
+//	public void result04() {
+//		LibBusiness lb = new LibBusiness();
+//		lb.solution04();
+//	}
+//
+//	public void result05() {
+//		LibBusiness lb = new LibBusiness();
+//		lb.solution05();
+//	}
+//	
+//	public void result06() {
+//		LibBusiness lb = new LibBusiness();
+//		lb.solution06();
+//	}// end result
 	
 	
 	
