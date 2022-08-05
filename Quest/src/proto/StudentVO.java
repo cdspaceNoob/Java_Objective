@@ -49,5 +49,13 @@ public class StudentVO {
 		this.stdAge = age;
 	}/* getter setter */
 	
+	
+	/* metohds */
+	public void takeBook() {
+		LibBusiness lb = new LibBusiness();
+		
+	}
+	
+	
 	/* method */
 }

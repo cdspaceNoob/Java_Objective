@@ -10,8 +10,8 @@ public class LibMain {
 	/* MAIN */
 	public static void main(String[] args) {
 		LibMain main = new LibMain();
-//		main.bkLoader();
-//		main.stLoader();
+//		main.bkLoader(); 최초 1회 로드 
+//		main.stLoader(); 최초 1회 로드 
 		main.result00();
 		main.result01();
 		main.result02();

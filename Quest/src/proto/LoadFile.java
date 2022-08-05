@@ -18,7 +18,7 @@ public class LoadFile {
 		BufferedReader br = new BufferedReader(fr);
 		String line= null;
 		StudentVO vo = null;
-		while((line=br.readLine())!=null) { //null은 파일의 끝을 가리킴
+		while((line=br.readLine())!=null) { 
 			//System.out.println(line);
 			vo = new StudentVO(line);
 			list.add(vo);
@@ -38,7 +38,7 @@ public class LoadFile {
 		BufferedReader br = new BufferedReader(fr);
 		String line= null;
 		BookVO vo = null;
-		while((line=br.readLine())!=null) { //null은 파일의 끝을 가리킴
+		while((line=br.readLine())!=null) { 
 			//System.out.println(line);
 			vo = new BookVO(line);
 			list.add(vo);
