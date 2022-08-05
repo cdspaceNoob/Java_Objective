@@ -4,9 +4,22 @@ import java.sql.SQLException;
 
 public class LibBusiness {
 	
+	
+	// 도서 대출 
 	public void Borrow(int stdNo, int bookNo) throws SQLException {
 		ListDAO ldao = new ListDAO();
 		ldao.insertList(stdNo, bookNo);
+	}
+	
+	// 도서 반납
+	public void giveBack(int bookNo) {
+		ListDAO lado = new ListDAO();
+		try {
+			lado.giveBack(bookNo);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	

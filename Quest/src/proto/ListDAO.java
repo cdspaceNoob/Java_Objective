@@ -35,11 +35,24 @@ public class ListDAO {
 	}
 	
 	
-	public boolean insertReturn(int bookNo) {
+	public boolean giveBack(int bookNo) throws SQLException {
 		boolean flag = false;
 		
 		Connection con = ConnectionManager.getConnection();
-		String sql = "insert into list(datecheck) values(now());";
+		String sql = "update list set datecheck = now() where bookNo = "+bookNo+";";
+		
+		PreparedStatement pstmt = con.prepareStatement(sql);
+		
+		int affectedCount = 0;
+		
+		affectedCount = pstmt.executeUpdate();
+		
+		if(affectedCount > 0) {
+			flag = true;
+		}
+		
+		pstmt.close();
+		con.close();
 		
 		return flag;
 	}

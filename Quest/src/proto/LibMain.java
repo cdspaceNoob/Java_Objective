@@ -12,75 +12,81 @@ public class LibMain {
 		LibMain main = new LibMain();
 //		main.bkLoader(); 최초 1회 로드 
 //		main.stLoader(); 최초 1회 로드 
-		main.result00();
-		main.result01();
-		main.result02();
-		main.result03();
-		main.result04();
-		main.result05();
-		main.result06();
+//		main.result00();
+//		main.result01();
+//		main.result02();
+//		main.result03();
+//		main.result04();
+//		main.result05();
+//		main.result06();
+//		
+		/* 대출 */
+//		try {
+//			main.borrowBook(20162741, 3);
+//		} catch (SQLException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//		
+//		try {
+//			main.borrowBook(20162741, 4);
+//		} catch (SQLException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//		try {
+//			main.borrowBook(20172315, 1);
+//		} catch (SQLException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//		try {
+//			main.borrowBook(20182461, 6);
+//		} catch (SQLException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//		try {
+//			main.borrowBook(20192891, 5);
+//		} catch (SQLException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//		try {
+//			main.borrowBook(20162741, 7);
+//		} catch (SQLException e1) {
+//			// TODO Auto-generated catch block
+//			e1.printStackTrace();
+//		}
+//		try {
+//			main.borrowBook(20202365, 8);
+//		} catch (SQLException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//		try {
+//			main.borrowBook(20212863, 9);
+//		} catch (SQLException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//		try {
+//			main.borrowBook(20192115, 10);
+//		} catch (SQLException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//		try {
+//			main.borrowBook(20192891, 13);
+//		} catch (SQLException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+		/* 대출 끝 */
 		
-		try {
-			main.borrowBook(20162741, 3);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		/* 반납 */ 
+		main.giveBack(13);
 		
-		try {
-			main.borrowBook(20162741, 4);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		try {
-			main.borrowBook(20172315, 1);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		try {
-			main.borrowBook(20182461, 6);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		try {
-			main.borrowBook(20192891, 5);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		try {
-			main.borrowBook(20162741, 7);
-		} catch (SQLException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
-		try {
-			main.borrowBook(20202365, 8);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		try {
-			main.borrowBook(20212863, 9);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		try {
-			main.borrowBook(20192115, 10);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		try {
-			main.borrowBook(20192891, 13);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 		
 		
 	
@@ -126,6 +132,12 @@ public class LibMain {
 	public void borrowBook(int stdNo, int bookNo) throws SQLException {
 		LibBusiness lb = new LibBusiness();
 		lb.Borrow(stdNo, bookNo);
+	}
+	
+	// 반납
+	public void giveBack(int bookNo) {
+		LibBusiness lb = new LibBusiness();
+		lb.giveBack(bookNo);
 	}
 	
 	
