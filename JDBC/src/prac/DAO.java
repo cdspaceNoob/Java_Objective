@@ -2,11 +2,43 @@ package prac;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+
 public class DAO {
 
+	// 테이블 내용 불러오기 
+	public void selectTable(String tbName) throws SQLException {
+//		String sql = "select * from ?";
+		String sql = "select * from "+tbName;
+		
+		Connection con = ConnectionManager.getConnection();
+		PreparedStatement pstmt = con.prepareStatement(sql);
+//		pstmt.setString(1, tbName);
+		
+		ResultSet rs = pstmt.executeQuery();
+		
+		pstmt.close();
+		con.close();
+		
+		int no = 0;
+		String name = "";
+		String manufacturing = "";
+		int price = 0;
+		
+		while(rs.next()) {
+			no = rs.getInt(1);
+			name = rs.getString(2);
+			manufacturing = rs.getString(3);
+			price = rs.getInt(4);
+			
+			System.out.println("No:"+no+" / "+"name:"+name+" / "+"manufacturing:"+manufacturing+" / "+"price:"+price);
+		}
+	}// selectTable()
+	
+		
 	// 테이블 생성 
 	public boolean createTable() throws SQLException {
 		boolean flag = false;
@@ -35,7 +67,7 @@ public class DAO {
 	}//createTable()
 	
 	
-	// Toy 테이블에 레고드 insert
+	// Toy 테이블에 레코드 insert
 	public boolean insertToy(String name, String manufacturing, int price) throws SQLException {
 		boolean flag = false;
 		

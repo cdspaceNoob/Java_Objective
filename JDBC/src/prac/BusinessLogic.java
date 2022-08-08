@@ -3,6 +3,11 @@ package prac;
 import java.sql.SQLException;
 
 public class BusinessLogic {
+	// 테이블 조회하기 
+	public void selectTable(String tbName) throws SQLException {
+		DAO dao = new DAO();
+		dao.selectTable(tbName);
+	}//selectTable()
 	
 	// 테이블 생성하기(고정 / statement 사용) 
 	public boolean createTable() throws SQLException {

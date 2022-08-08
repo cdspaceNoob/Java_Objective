@@ -9,9 +9,24 @@ public class JdbcMain {
 		JdbcMain main = new JdbcMain();
 		
 		//main.createTable();
-		main.insertToy("watergun", "LockheedMatin", 1500000);
+		//main.insertToy("watergun", "LockheedMatin", 1500000);
+		main.selectTable("toys");
 	}//main();
 
+	
+	
+	
+	// 테이블 조회하기 
+	public void selectTable(String tbName) {
+		BusinessLogic bl = new BusinessLogic();
+		try {
+			bl.selectTable(tbName);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
 	
 	// 테이블 생성하기 
 	public void createTable() {
