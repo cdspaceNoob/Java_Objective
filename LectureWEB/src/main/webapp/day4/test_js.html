@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>JavaScript Test</title>
+<script type="text/javascript">
+function split_number(){
+	let num = 123;
+	let num_1 = num%10;
+	let num_2 = parseInt(num%100/10);
+	let num_3 = parseInt(num/100);
+	let string = parseInt("100");	
+	console.log(num_1);
+	console.log(num_2);
+	console.log(num_3);
+	console.log(string);
+}
+
+function for_test(){
+	for(i=0; i<10; i++){
+		console.log(i);	
+	}
+}
+
+
+function test_if(){
+	if("1"===1){
+		console.log("true");
+	}else{
+		console.log("false");
+	}
+}
+
+
+test_if();
+for_test();
+split_number();
+</script>
+</head>
+<body>
+
+</body>
+</html>
