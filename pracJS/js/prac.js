@@ -7,4 +7,14 @@ function calendar(year, month) {
   const d2 = new Date(year, month, 0);
   document.getElementById("year_month").innerHTML =
     "\t\t" + year + "년 " + month + "월";
+
+  let blank = d1.getDay();
+  let last = d2.getDay();
+  let date = 1;
+  let week = "";
+  let result = "";
+
+  for (i = 0; i < blank; i++) {
+    week = week + "\t";
+  }
 }
