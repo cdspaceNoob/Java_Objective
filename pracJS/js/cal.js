@@ -21,6 +21,7 @@ function view_month(mon) {
   console.log(week);
   console.log("\n");
 }
+
 //8월 달력 생성 코드 작성(브라우저 콘솔에)
 function view_month_auto(mon) {
   console.log("\t\t\t" + mon + "월");
@@ -52,6 +53,7 @@ function view_month_auto(mon) {
 
 // Date 클래스를 이용하여 달력을 완성하시오.
 function view_monthV2(year, mon) {
+  // 숫자 세 개: 연, 월, 일
   const d1 = new Date(year, mon - 1, 1);
   const d2 = new Date(year, mon, 0);
   console.log("\t\t" + year + "년 " + mon + "월");
@@ -75,16 +77,19 @@ function view_monthV2(year, mon) {
   console.log(week);
   console.log("\n");
 }
+
 //view_monthV2(1988,2);
 function test_event() {
   alert("event");
 }
+
 function make_calendar() {
   //month의 값을 셋팅하는 코드
   let month = document.getElementById("month").value;
   let result = view_month_auto(month);
   document.getElementById("calendar").innerHTML = result;
 }
+
 function make_calendar_old() {
   //month의 값을 셋팅하는 코드
   let month = document.getElementById("month").value;
