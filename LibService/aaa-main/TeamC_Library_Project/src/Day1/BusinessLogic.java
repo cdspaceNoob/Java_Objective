@@ -101,6 +101,8 @@ public class BusinessLogic {
 	}//returnBook
 	
 	
+	
+	
 	public static void autoTransaction() {
 		LibraryDAO dao = new LibraryDAO();
 		
@@ -117,8 +119,8 @@ public class BusinessLogic {
 							+ ",?)";
 
 		String sqlCnt		= "update studentTBL "
-				+ "set loan_cnt = loan_cnt +1"
-				+ "where std_no = ?";
+							+ "set loan_cnt = loan_cnt+1 "
+							+ "where std_no = ?";
 		
 		
 		Connection con = ConnectionManager.getConnection();
@@ -174,7 +176,7 @@ public class BusinessLogic {
 				//pstmtInsert.setString(6, listYn.get((int)(Math.random()*(listYn.size()))));
 				cntInsert.setInt(1, stdNum);
 				pstmtInsert.executeQuery();
-				cntInsert.executeQuery();
+				cntInsert.executeUpdate();
 			}
 			
 			
