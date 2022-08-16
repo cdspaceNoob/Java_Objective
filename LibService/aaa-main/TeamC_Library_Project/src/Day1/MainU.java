@@ -8,15 +8,22 @@ public class MainU {
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		InfoBook ib = new InfoBook();
+//		InfoBook ib = new InfoBook();
+//		try {
+//			ib.searchBook("가나다라");
+//		} catch (SQLException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+		BusinessLogic bl = new BusinessLogic();
 		try {
-			ib.searchBook("가나다라");
+			bl.borrowBook(20170654, 7309);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
-	}
+	}//main()
 	
 	public void bookstatus() throws SQLException {
 		Scanner scan = new Scanner(System.in);

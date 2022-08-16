@@ -27,7 +27,20 @@ function get_content(){
 	return false;
 }
 
+function radioEvent(){
+	const handler = (event)=>{
+		if(event.target.checked){
+			alert("radio number "+event.target.value+" is checked");
+		}
+	}
+	const radios = document.getElementsByName("radio_check");
+	for(let i=0; i<radios.length; i++){
+		radios[i].addEventListener('click', handler);
+	}
+}
+
 function radio_check(){
+	radioEvent();
 	// 배열은 고정이므로 const로 선언해준다
 	const radios = document.getElementsByName("radio_check");
 	for(i=0; i<radios.length; i++){
@@ -35,7 +48,22 @@ function radio_check(){
 	}
 }
 
+function registEvent(){
+	const handler = (event)=>{
+		if(event.target.checked){
+			alert("box number "+event.target.value+" is checked");
+		}else{
+			alert("box number "+event.target.value+" is unchecked")
+		}
+	}
+	const boxes = document.getElementsByName("checkbox");  
+	for(let i=0; i<boxes.length; i++){
+		boxes[i].addEventListener('click',handler);
+	}
+}
+
 function checkbox(){
+	registEvent();
 	// 배열은 고정이므로 const로 선언해준다
 	const boxes = document.getElementsByName("checkbox");  
 	let counts = 0;
@@ -51,3 +79,14 @@ function checkbox(){
 	}
 	alert("총 "+counts+"개 체크되었어요!");
 }
+
+function getContentTag(){
+	let image = document.getElementById("img");
+	image.src = "../img/1495868.jpeg";
+	let contents = document.getElementsByClassName("img_test");
+	//for(let i=0; i<contents.length; i++){
+	//	alert("value = "+contents[i].innerHTML);
+	//}
+	return false;
+}
+

@@ -4,6 +4,7 @@
 	<meta charset="UTF-8">
 	<title>form test</title>
 		<script src="../js/join.js"></script>
+		<script src="../js/test_char.js"></script>
 	</head>
 	<body>
 	
@@ -31,19 +32,29 @@
 	</div>
 	
 	<div style="text-align:center; margin-bottom:50px;">
-		<input type="radio" name="radio_check">1<br>
-		<input type="radio" name="radio_check">2<br>
-		<input type="radio" name="radio_check">3<br>
+		<input type="radio" name="radio_check" value=1>1<br>
+		<input type="radio" name="radio_check" value=2>2<br>
+		<input type="radio" name="radio_check" value=3>3<br>
 		<input type="button" value="선택하기" onclick="radio_check()">
 	</div>
 	
-	<div style="text-align:center;">
+	<div style="text-align:center; margin-bottom:50px;">
 		<input type="checkbox" name="checkbox" value=1>1<br>
 		<input type="checkbox" name="checkbox" value=2>2<br>
 		<input type="checkbox" name="checkbox" value=3>3<br>
 		<input type="checkbox" name="checkbox" value=4>4<br>
 		<input type="checkbox" name="checkbox" value=5>5<br>
 		<button onclick="return checkbox()">몇 개 체크되었을까요?</button>
+	</div>
+	
+	<div class="img_test" style="text-align:center; margin-bottom:50px;">
+	<img src="" id="img" style="text-align:center;"><br>
+		<button onclick=getContentTag();>그림 나와라!</button>
+	</div>
+	
+	<div style="text-align:center; margin-bottom:50px;">
+	<a href="#" onclick="invokeHREF();">함수 호출</a><br>
+	<a href="javascript:invokeHREF();">함수 호출</a>
 	</div>
 	
 	
