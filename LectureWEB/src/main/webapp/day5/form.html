@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<meta charset="UTF-8">
+	<title>form test</title>
+		<script src="../js/join.js"></script>
+	</head>
+	<body>
+	
+	<div style="text-align:center; margin-top:50px; margin-bottom:50px;">
+		<input type="text" id="input_id" placeholder="input 예제" style="width:200px;">
+		<input type="button" id="input_id_btn" value="검사" onclick="check_id()">
+	</div>
+	
+	<div style="text-align:center; margin-bottom:50px;">
+		<select id="selection" onchange="select_number()">
+			<option value=0>select 태그로 value 출력하기</option>
+			<option value=1>1</option>
+			<option value=2>2</option>
+			<option value=3>3</option>
+			<option value=4>4</option>
+		</select>
+	</div>
+	
+	<div style="text-align:center;">
+		<textarea class="t_area" rows="8" cols="50" placeholder="여기도 placeholder를 사용할 수 있습니다"></textarea>
+	</div>
+	
+	<div style="text-align:center; margin-bottom:50px;">
+		<button onclick="return get_content()">내용 출력하기</button>
+	</div>
+	
+	<div style="text-align:center; margin-bottom:50px;">
+		<input type="radio" name="radio_check">1<br>
+		<input type="radio" name="radio_check">2<br>
+		<input type="radio" name="radio_check">3<br>
+		<input type="button" value="선택하기" onclick="radio_check()">
+	</div>
+	
+	<div style="text-align:center;">
+		<input type="checkbox" name="checkbox" value=1>1<br>
+		<input type="checkbox" name="checkbox" value=2>2<br>
+		<input type="checkbox" name="checkbox" value=3>3<br>
+		<input type="checkbox" name="checkbox" value=4>4<br>
+		<input type="checkbox" name="checkbox" value=5>5<br>
+		<button onclick="return checkbox()">몇 개 체크되었을까요?</button>
+	</div>
+	
+	
+	</body>
+</html>
