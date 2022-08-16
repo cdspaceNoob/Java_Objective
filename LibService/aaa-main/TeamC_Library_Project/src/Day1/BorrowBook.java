@@ -81,14 +81,14 @@ public class BorrowBook {
 		if (student.getLoan_cnt() < 5) {
 			flag = true;
 		}
-		return flag;
+		return flag; //true이면 대출 가능 5권 미만 대출 
 	}
 
 	// 학생이 빌리려는 도서가 도서관에 있는지?
 	public boolean checkHaveBook() {
 		boolean flag = false;
 		if (book.getLoan_yn().toUpperCase().equals("Y")) {
-			flag = true;
+			flag = true; // true이면 대출 가능 
 		}
 		return flag;
 	}

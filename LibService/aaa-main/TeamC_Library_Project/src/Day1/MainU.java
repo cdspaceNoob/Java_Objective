@@ -15,13 +15,10 @@ public class MainU {
 //			// TODO Auto-generated catch block
 //			e.printStackTrace();
 //		}
-		BusinessLogic bl = new BusinessLogic();
-		try {
-			bl.borrowBook(20170654, 7309);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+
+		BusinessLogic.autoTransaction();
+		
+		
 
 	}//main()
 	
