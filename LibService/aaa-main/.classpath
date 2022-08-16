@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="TeamC_Library_Project/src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="/Library/Java/JavaVirtualMachines/jdk-11.0.15.1.jdk/Contents/Home/lib/mariadb-java-client-2.7.3.jar"/>
+	<classpathentry kind="output" path="TeamC_Library_Project/bin"/>
+</classpath>
