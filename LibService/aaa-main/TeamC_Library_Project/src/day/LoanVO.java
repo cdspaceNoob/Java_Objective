@@ -1,4 +1,4 @@
-package Day1;
+package day;
 // 대출 장부 
 public class LoanVO {
 	

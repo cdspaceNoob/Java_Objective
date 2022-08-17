@@ -1,4 +1,4 @@
-package Day1;
+package day;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -8,17 +8,15 @@ public class MainU {
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-//		InfoBook ib = new InfoBook();
-//		try {
-//			ib.searchBook("가나다라");
-//		} catch (SQLException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-
-		BusinessLogic.autoTransaction();
-		
-		
+		BlMajor bm = new BlMajor();
+		try {
+			bm.majorFreq(); // 최다 대출 학과 
+			System.out.println();
+			bm.majorLazy(); // 평균 최장 대출 학과 
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}//end major method
 
 	}//main()
 	
@@ -66,39 +64,9 @@ public class MainU {
 				break;
 			case 2:
 				System.out.println("대여목록");
-				
-				System.out.println("분류번호|    도서명      |    저자    |");
-				System.out.println("7301	야쿠자의 덕질1	   야츠다테키");
-				System.out.println("7302	헤어질 결심 각본   박찬욱");
-				System.out.println("7303	계속 가보겠습니다  임은정");
-				System.out.println("7304	불편한 편의점2	   김호연	");
-				System.out.println("7305	   흔한남매	   백난도	");
-				System.out.println("7306	   역행자	       자청	");
-				System.out.println("7307	   삶의격	       파스칼");
-				System.out.println("7308	   튜브	       손원평	");
-				System.out.println("7309	   자유	       조너선	");
-				System.out.println("7310	  저주토끼	   정보라");
-				System.out.println("7311	  인간실격	   다자이오사무");
+								
 				System.out.println("7312	  아노말리	   에르베르텔리에");
-				System.out.println("7313	    류	       히가시야마아키라");
-				System.out.println("7314	  비올레트	   발레리페랭");
-				System.out.println("7315	   모비딕	       허먼멘빌");
-				System.out.println("7316	   데미안	       헤르만헤세");
-				System.out.println("7317	  베이비토크	   샐리워드");
-				System.out.println("7318	   하얼빈	       김훈");
-				System.out.println("7319	   미키7	       에드워드애슈턴");
-				System.out.println("7320     유럽도시기행2	   유시민");
-				System.out.println("7321	 하쿠다사진관	   허태연");
-				System.out.println("7322	 해커스 토익	   데이비드초");
-				System.out.println("7323	  악어의눈물	   키스포크너");
-				System.out.println("7324	 출생의 비밀	   홍성식");
-				System.out.println("7325	 묘사하는마음	   김혜리");
-				System.out.println("7326	  작별인사       김영하");
-				System.out.println("7327	 미움받을용기	   기시미이치로");
-				System.out.println("7328	5가지사랑의언어	   게리채프먼");
-				System.out.println("7329	 밥상머리교육	   김정진");
-				System.out.println("7330	    몰입	       황농문");
-				
+
 				System.out.println("대여하실 책의 번호를 입력해주세요>>");
 				bookNo = scan.nextInt();
 				System.out.println("학생번호를 입력해주세요 >>");

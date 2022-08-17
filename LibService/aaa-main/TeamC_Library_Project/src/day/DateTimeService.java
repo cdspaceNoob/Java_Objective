@@ -1,4 +1,4 @@
-package Day1;
+package day;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

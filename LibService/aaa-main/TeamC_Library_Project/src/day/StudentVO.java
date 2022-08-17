@@ -1,4 +1,4 @@
-package Day1;
+package day;
 
 public class StudentVO {
 	/* fields */

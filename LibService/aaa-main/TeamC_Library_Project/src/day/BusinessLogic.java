@@ -1,4 +1,4 @@
-package Day1;
+package day;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -151,7 +151,7 @@ public class BusinessLogic {
 			listYn.add("N");
 			
 			BusinessLogic bl = new BusinessLogic();
-			boolean flag = bl.borrowCondition(listSt.get((int)((Math.random()*(listSt.size())))), listBk.get((int)((Math.random()*(listSt.size())))));
+			boolean flag = bl.borrowCondition(listSt.get((int)((Math.random()*(listBk.size())))), listBk.get((int)((Math.random()*(listSt.size())))));
 			
 			if(flag == false) {
 				autoTransaction();

@@ -1,4 +1,4 @@
-package Day1;
+package day;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
