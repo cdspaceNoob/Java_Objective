@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script type="text/javascript" src="js/baseball.js"></script>
+    <style>
+      .left {
+        float: left;
+        width: 70%;
+      }
+
+      .right {
+        float: right;
+        width: 30%;
+        text-align: center;
+      }
+
+      input[name="answer_box"] {
+        width: 50px;
+        height: 50px;
+        margin: 10px;
+        text-align: center;
+        font-size: 25px;
+      }
+
+      input[name="try_box"] {
+        width: 50px;
+        height: 50px;
+        margin: 10px;
+        text-align: center;
+        font-size: 25px;
+      }
+
+      input::-webkit-outer-spin-button,
+      input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+    </style>
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="left" style="text-align: center; margin-top: 50px">
+      <div id="start_game" style="margin-bottom: 50px">
+        <a href="javascript:game_start()" style="font-size: 50px">
+          게임 시작
+        </a>
+
+        <div id="select_difficulty">
+          <input
+            type="radio"
+            name="radio_difficulty"
+            id="radio_difficulty1"
+            value="1"
+          />하(30회)
+          <input
+            type="radio"
+            name="radio_difficulty"
+            id="radio_difficulty2"
+            value="2"
+          />중(20회)
+          <input
+            type="radio"
+            name="radio_difficulty"
+            id="radio_difficulty3"
+            value="3"
+          />상(7회)
+        </div>
+      </div>
+
+      <a style="font-size: 50px; margin-top: 50px">정답</a>
+      <br />
+      <div id="answer_on" style="margin-bottom: 50px">
+        <input type="text" name="answer_box" readonly="readonly" value="?" />
+        <input type="text" name="answer_box" readonly="readonly" value="?" />
+        <input type="text" name="answer_box" readonly="readonly" value="?" />
+        <input type="text" name="answer_box" readonly="readonly" value="?" />
+      </div>
+      <div id="answer" style="margin-bottom: 50px; display: none">
+        <input
+          type="text"
+          name="answer_box"
+          readonly="readonly"
+          value="?"
+          id="answer_box_1"
+        />
+        <input
+          type="text"
+          name="answer_box"
+          readonly="readonly"
+          value="?"
+          id="answer_box_2"
+        />
+        <input
+          type="text"
+          name="answer_box"
+          readonly="readonly"
+          value="?"
+          id="answer_box_3"
+        />
+        <input
+          type="text"
+          name="answer_box"
+          readonly="readonly"
+          value="?"
+          id="answer_box_4"
+        />
+      </div>
+
+      <div id="try">
+        <a style="font-size: 50px"> 입력 </a>
+        <br />
+        <input type="text" name="try_box" id="try_box_1" />
+        <input type="text" name="try_box" id="try_box_2" />
+        <input type="text" name="try_box" id="try_box_3" />
+        <input type="text" name="try_box" id="try_box_4" />
+      </div>
+
+      <div id="ban_boxes" style="margin-top: 100px">
+        <p>숫자 점검</p>
+        <input type="checkbox" />0 <input type="checkbox" />1
+        <input type="checkbox" />2 <input type="checkbox" />3
+        <input type="checkbox" />4 <input type="checkbox" />5
+        <input type="checkbox" />6 <input type="checkbox" />7
+        <input type="checkbox" />8 <input type="checkbox" />9
+      </div>
+
+      <div id="main_btns" style="margin-top: 70px">
+        <button onclick="match_number()" style="width: 100px; height: 60px">
+          시도
+        </button>
+        <button onclick="#" style="width: 100px; height: 60px">새 게임</button>
+      </div>
+    </div>
+
+    <div class="right">
+      <div id="div_difficulty">
+        <p style="font-size: 50px">난이도</p>
+        <p id="display_difficulty" style="font-size: 25px"></p>
+        <p style="font-size: 50px">남은 횟수</p>
+        <p id="trycnt_display" style="font-size: 25px"></p>
+      </div>
+
+      <div id="div_record" style="margin-top: 50px">
+        <p style="font-size: 50px">기록</p>
+        <p id="records"></p>
+      </div>
+    </div>
+  </body>
+</html>
