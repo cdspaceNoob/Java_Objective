@@ -7,11 +7,14 @@
     <script type="text/javascript" src="js/baseball.js"></script>
     <style>
       .left {
+        display: none;
         float: left;
         width: 70%;
+        text-align: center;
       }
 
       .right {
+        display: none;
         float: right;
         width: 30%;
         text-align: center;
@@ -31,6 +34,16 @@
         margin: 10px;
         text-align: center;
         font-size: 25px;
+        background-image: url(react.png);
+        background-size: 50px;
+      }
+      focus-input[name="try_box"] :focus {
+        width: 50px;
+        height: 50px;
+        margin: 10px;
+        text-align: center;
+        font-size: 25px;
+        background-image: url(react.png);
       }
 
       input::-webkit-outer-spin-button,
@@ -42,33 +55,32 @@
     <title>Document</title>
   </head>
   <body>
-    <div class="left" style="text-align: center; margin-top: 50px">
-      <div id="start_game" style="margin-bottom: 50px">
-        <a href="javascript:game_start()" style="font-size: 50px">
-          게임 시작
-        </a>
-
-        <div id="select_difficulty">
-          <input
-            type="radio"
-            name="radio_difficulty"
-            id="radio_difficulty1"
-            value="1"
-          />하(30회)
-          <input
-            type="radio"
-            name="radio_difficulty"
-            id="radio_difficulty2"
-            value="2"
-          />중(20회)
-          <input
-            type="radio"
-            name="radio_difficulty"
-            id="radio_difficulty3"
-            value="3"
-          />상(7회)
-        </div>
+    <div style="text-align: center; margin-top: 50px; margin-bottom: 20px">
+      <a href="javascript:game_start()" style="font-size: 50px"> 게임 시작 </a>
+      <div id="select_difficulty">
+        <input
+          type="radio"
+          name="radio_difficulty"
+          id="radio_difficulty1"
+          value="1"
+        />하(30회)
+        <input
+          type="radio"
+          name="radio_difficulty"
+          id="radio_difficulty2"
+          value="2"
+        />중(20회)
+        <input
+          type="radio"
+          name="radio_difficulty"
+          id="radio_difficulty3"
+          value="3"
+        />상(7회)
       </div>
+    </div>
+
+    <div class="left" style="text-align: center; margin-top: 50px">
+      <div id="start_game" style="margin-bottom: 50px"></div>
 
       <a style="font-size: 50px; margin-top: 50px">정답</a>
       <br />
@@ -119,7 +131,7 @@
       </div>
 
       <div id="ban_boxes" style="margin-top: 100px">
-        <p>숫자 점검</p>
+        <p>숫자 잠금</p>
         <input type="checkbox" />0 <input type="checkbox" />1
         <input type="checkbox" />2 <input type="checkbox" />3
         <input type="checkbox" />4 <input type="checkbox" />5
@@ -131,7 +143,12 @@
         <button onclick="match_number()" style="width: 100px; height: 60px">
           시도
         </button>
-        <button onclick="#" style="width: 100px; height: 60px">새 게임</button>
+        <button onclick="get_start()" style="width: 100px; height: 60px">
+          새 게임
+        </button>
+        <button onclick="gg()" style="width: 100px; height: 60px">
+          정답 확인
+        </button>
       </div>
     </div>
 
