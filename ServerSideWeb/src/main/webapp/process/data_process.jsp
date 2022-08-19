@@ -21,9 +21,9 @@ LoginCheck check = new LoginCheck();
 boolean flag = check.isMemeber(id, pw);
 
 //받은 데이터를 Logic에 투입
-String url = "fail.jsp";
+String url = "../link/fail.jsp";
 if(flag==true){
-	url = "success.jsp";
+	url = "../link/success.jsp";
 }
 response.sendRedirect(url);
 %>
