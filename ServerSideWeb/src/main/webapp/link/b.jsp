@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+<h1>B page</h1>
+<a href="../hello.jsp">hello</a>
 </body>
 </html>

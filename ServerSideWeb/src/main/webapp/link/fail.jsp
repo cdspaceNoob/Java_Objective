@@ -7,7 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h1>A page</h1>
-<a href="b.jsp">B page</a>
+<h1>RE TRY</h1>
 </body>
 </html>
