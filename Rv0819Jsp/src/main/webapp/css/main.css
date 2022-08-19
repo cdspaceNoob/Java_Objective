@@ -1,0 +1,10 @@
+@charset "UTF-8";
+
+.main table{
+	text-align: center;
+	color: gray;
+}
+
+table th{
+	font-size:35px;
+}
