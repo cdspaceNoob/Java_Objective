@@ -8,5 +8,9 @@
 </head>
 <body>
 <h1>WELCOME ADMIN</h1>
+<%
+String name = request.getParameter("name");
+out.print(name);
+%>
 </body>
 </html>

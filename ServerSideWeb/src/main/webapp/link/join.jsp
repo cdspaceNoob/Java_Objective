@@ -25,6 +25,7 @@
 					String now = dts.getNow();
 					out.print(now);
 			%>
+			<a href="data_process2.jsp">담임코드 로컬코드 A</a>
 		</div>
 </body>
 </html>
