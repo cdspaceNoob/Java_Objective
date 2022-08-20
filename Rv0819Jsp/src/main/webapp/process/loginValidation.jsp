@@ -17,9 +17,13 @@
 		flag = dao.validateUser(Integer.parseInt(stdNo), Integer.parseInt(age));
 		
 		if(flag==true){
-			response.sendRedirect("../link/loginOK.html");	
+			response.sendRedirect("../link/loginOK.jsp");	
 		}else{
-			response.sendRedirect("../link/loginFailed.html");
+		%>
+			<!-- <script>alert("정보가 일치하지 않습니다");</script> -->
+			<!--  response.sendRedirect("../link/loginFailed.jsp"); -->
+		<%
+		response.sendRedirect("../link/loginFailed.jsp");
 		}
 		%>
 	</body>
