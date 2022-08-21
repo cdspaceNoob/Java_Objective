@@ -1,5 +1,5 @@
 @charset "UTF-8";
 
-table .result{
-	display:none;
+table #result{
+	/* display:none; */
 }
