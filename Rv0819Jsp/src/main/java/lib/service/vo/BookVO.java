@@ -5,7 +5,18 @@ public class BookVO {
 	private int bookNo;
 	private String title;
 	private String author;
+	private int price;
 	private String date;
+	
+	/* constructor */
+	public BookVO(int bookNo, String title, String author, int price, String date) {
+		this.bookNo = bookNo;
+		this.title 	= title;
+		this.author = author;
+		this.price 	= price;
+		this.date 	= date;
+	}
+	
 	
 	/* getter and setter */
 	public int getBookNo() {
@@ -25,6 +36,12 @@ public class BookVO {
 	}
 	public void setAuthor(String author) {
 		this.author = author;
+	}
+	public int getPrice() {
+		return this.price;
+	}
+	public void setPrice(int price) {
+		this.price = price;
 	}
 	public String getDate() {
 		return date;
