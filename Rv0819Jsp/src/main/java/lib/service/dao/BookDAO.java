@@ -23,8 +23,7 @@ public class BookDAO {
 		pstmt.setString(1, rTitle);
 		
 //		pstmt.setString(1, title);
-		
-		System.out.println(sql);
+//		System.out.println(sql);
 		
 		BookVO vo = null;
 		ResultSet rs = pstmt.executeQuery();
