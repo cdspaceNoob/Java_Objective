@@ -10,7 +10,7 @@
 		<title>회원 목록 조회 페이지</title>
 	</head>
 	<body>
-	<form method="get" action="../process/data_del.jsp">
+	<!-- <form method="post" action="../process/data_del.jsp"> -->
 		<table>
 		<tr>
 			<th>아이디</th>
@@ -33,6 +33,7 @@
 				String email = vo.getEmail();
 				String date = vo.getJoinDate();
 				%>
+				<form method="post" action="../process/data_del.jsp">
 				<tr>
 					<td><input type="text" readonly="readonly" name="id" value="<%=id%>"></td>
 					<td><input type="text" readonly="readonly" value="<%=pwd%>"></td>
@@ -41,11 +42,13 @@
 					<td><input type="text" readonly="readonly" value="<%=date%>"></td>
 					<td><input type="submit" value="삭제"></td>
 				</tr>
-				
+				</form>
 			<% } %>
 		</table>
-		</form>
-		
+		<!-- </form> -->
 		<a href="regist.jsp">등록 화면으로 바로가기</a>
 		</body>
 </html>
+
+
+
