@@ -24,15 +24,15 @@
 			</tr>
 			<tr>
 				<td>비밀번호</td>
-				<td><input type="text" name="pwd" value="<%=vo.getPwd() %>" required></td>
+				<td><input type="text" name="pwd" value="<%=vo.getPwd() %>" ></td>
 			</tr>
 			<tr>
 				<td>이름</td>
-				<td><input type="text" name="name" value="<%=vo.getName() %>" required></td>
+				<td><input type="text" name="name" value="<%=vo.getName() %>" ></td>
 			</tr>
 			<tr>
 				<td>이메일</td>
-				<td><input type="text" name="email" value="<%=vo.getEmail() %>" required></td>
+				<td><input type="text" name="email" value="<%=vo.getEmail() %>" ></td>
 			</tr>
 			<tr>
 				<td><input type="submit" value="수정"></td>

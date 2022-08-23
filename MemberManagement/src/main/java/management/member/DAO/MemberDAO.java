@@ -91,6 +91,13 @@ public class MemberDAO {
 
 		String sql = "update t_member set pwd=?, name=?, email=? where id=?;";
 		
+		if(name == null) {
+			name = "";
+		}
+		if(email == null) {
+			email = "";
+		}
+		
 		PreparedStatement pstmt = con.prepareStatement(sql);
 		pstmt.setString(1, pwd);
 		pstmt.setString(2, name);

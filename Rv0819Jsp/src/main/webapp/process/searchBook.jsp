@@ -1,3 +1,4 @@
+<%@page import="java.util.ArrayList"%>
 <%@page import="lib.service.vo.BookVO"%>
 <%@page import="lib.service.dao.BookDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -11,9 +12,11 @@
 <body>
 <%
 	String title	= request.getParameter("book_name");
+	String stdNo	= request.getParameter("stdNo");
 
 	BookDAO dao = new BookDAO();
-	BookVO vo = dao.searchBook(title);
+	
+	ArrayList<BookVO> list = dao.searchBook(title);
 	
 /* 	int rsNo 		= vo.getBookNo();
 	String rsTitle 	= vo.getTitle();
@@ -21,8 +24,8 @@
 	int rsPrice 	= vo.getPrice();
 	String rsDate 	= vo.getDate(); */
 	
-	request.setAttribute("vo", vo);
+	request.setAttribute("list", list);
 %>
-<jsp:forward page="../service/searchBook.jsp"></jsp:forward>
+<jsp:forward page="../service/searchBook.jsp?stdNo=<%=stdNo %>"></jsp:forward>
 </body>
 </html>

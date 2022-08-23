@@ -4,13 +4,14 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import lib.service.util.ConnectionManager;
 import lib.service.vo.BookVO;
 
 public class BookDAO {
 	
-	public BookVO searchBook(String title) throws SQLException {
+	public ArrayList<BookVO> searchBook(String title) throws SQLException {
 		
 		String sql = "select * from book where title like ?";
 		
@@ -26,11 +27,13 @@ public class BookDAO {
 //		System.out.println(sql);
 		
 		BookVO vo = null;
+		ArrayList<BookVO> list = new ArrayList<BookVO>();
 		ResultSet rs = pstmt.executeQuery();
 		while(rs.next()) {
 			vo = new BookVO(rs.getInt("bookno"), rs.getString("title"), rs.getString("author")
 					, rs.getInt("price"), rs.getString("indate"));
+			list.add(vo);
 		}
-		return vo;
+		return list;
 	}//searchBook
 }
