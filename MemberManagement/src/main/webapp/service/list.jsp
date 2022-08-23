@@ -33,16 +33,19 @@
 				String email = vo.getEmail();
 				String date = vo.getJoinDate();
 				%>
-				<form method="post" action="../process/data_del.jsp">
+				
 				<tr>
+				<form method="post" action="../process/data_del.jsp">
 					<td><input type="text" readonly="readonly" name="id" value="<%=id%>"></td>
 					<td><input type="text" readonly="readonly" value="<%=pwd%>"></td>
 					<td><input type="text" readonly="readonly" value="<%=name%>"></td>
 					<td><input type="text" readonly="readonly" value="<%=email%>"></td>
 					<td><input type="text" readonly="readonly" value="<%=date%>"></td>
 					<td><input type="submit" value="삭제"></td>
-				</tr>
+					<td><jsp:foward page=""></jsp:foward></td>
 				</form>
+				</tr>
+				
 			<% } %>
 		</table>
 		<!-- </form> -->
