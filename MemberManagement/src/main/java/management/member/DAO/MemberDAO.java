@@ -32,7 +32,7 @@ public class MemberDAO {
 		return affectedRow;
 	}//registData()
 	
-	// 조회
+	// 전체 조회
 	public ArrayList<MemberVO> viewData() throws SQLException{
 		Connection con = ConnectionManager.getConnection();
 		
@@ -48,7 +48,24 @@ public class MemberDAO {
 			list.add(vo);
 		}
 		return list;
-	}
+	}//viewData()
+	
+	// 세부 조회 
+	public MemberVO detailData(String id) throws SQLException {
+		Connection con = ConnectionManager.getConnection();
+		String sql = "select * from t_member where id = ?;";
+		PreparedStatement pstmt = con.prepareStatement(sql);
+		pstmt.setString(1, id);
+		ResultSet rs = pstmt.executeQuery();
+		MemberVO vo = null;
+		while(rs.next()) {
+			vo = new MemberVO(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5));
+		}
+		pstmt.close();
+		con.close();
+		
+		return vo;
+	}//detailData()
 	
 	//삭제 
 	public int delData(String id) throws SQLException {
@@ -66,5 +83,27 @@ public class MemberDAO {
 		pstmt.close();
 		con.close();
 		return affectedRow;
-	}
+	}//delData()
+	
+	//수정 
+	public void updateData(String pwd, String name, String email, String id) throws SQLException {
+		Connection con = ConnectionManager.getConnection();
+
+		String sql = "update t_member set pwd=?, name=?, email=? where id=?;";
+		
+		PreparedStatement pstmt = con.prepareStatement(sql);
+		pstmt.setString(1, pwd);
+		pstmt.setString(2, name);
+		pstmt.setString(3, email);
+		pstmt.setString(4, id);
+		
+		int affectedRow = pstmt.executeUpdate();
+		if(affectedRow>0) {
+			System.out.println("수정되었습니다");
+		}
+		pstmt.close();
+		con.close();
+	}//updateData()
+
+	
 }

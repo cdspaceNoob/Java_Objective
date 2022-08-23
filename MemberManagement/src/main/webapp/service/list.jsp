@@ -41,8 +41,8 @@
 					<td><input type="text" readonly="readonly" value="<%=name%>"></td>
 					<td><input type="text" readonly="readonly" value="<%=email%>"></td>
 					<td><input type="text" readonly="readonly" value="<%=date%>"></td>
+					<td><button type="button" onclick="location.href='update.jsp?id=<%=id%>'">수정</button></td>
 					<td><input type="submit" value="삭제"></td>
-					<td><jsp:foward page=""></jsp:foward></td>
 				</form>
 				</tr>
 				
