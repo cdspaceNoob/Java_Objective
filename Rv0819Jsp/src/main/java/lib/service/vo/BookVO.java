@@ -50,5 +50,10 @@ public class BookVO {
 		this.date = date;
 	}//getter and setter 
 	
+	@Override
+	public String toString() {
+		return String.format("%s %s %s %s %s", bookNo, title, author, price, date);
+	}
+	
 	
 } 

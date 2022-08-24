@@ -11,12 +11,13 @@
 	</head>
 	<%
 		ArrayList<BookVO> list = (ArrayList<BookVO>)request.getAttribute("list");
-		BookVO vo = null;
-		System.out.println(request.getParameter("stdNo"));
+		System.out.println("학번이 입력되었습니다 "+request.getParameter("stdNo"));
 		String stdNo = (String)request.getParameter("stdNo");
-		if(request.getParameter("stdNo") != null){ %>
+		if(stdNo==null){
+			response.sendRedirect("main.jsp");
+		}else{
+		%>		
 			<body>
-		
 			<form method="get" action="../process/searchBook.jsp">
 			<input type="hidden" name="stdNo" value="<%=stdNo %>">
 				<table border=1>
@@ -38,9 +39,10 @@
 						<td class="result">가격 </td>
 						<td class="result">등록 날짜 </td>
 					</tr>
+					
 					<% if(list != null){
-						for(int i=0; i<list.size(); i++){
-							vo = list.get(i);
+						for(int i=0; i<list.size(); i++){ 
+							BookVO vo = list.get(i);
 					%>
 					<tr>
 						<td><%=vo.getBookNo()%></td>
@@ -49,7 +51,10 @@
 						<td><%=vo.getPrice()%></td>
 						<td><%=vo.getDate()%></td>
 					</tr>
-					<% } %>
+					<% 
+						}
+					}
+					%>
 					<tr>
 						<td colspan=5>
 							<a href="../service/main.jsp">log out</a>
@@ -57,18 +62,6 @@
 					</tr>
 				</table>
 			</form>
-		</body>
-		<% }else{ %>
-		
-			<script>
-				alert("로그인 후 사용할 수 있습니다");
-				window.location.replace("../service/main.jsp")
-			</script>
-		<%
-			/* response.sendRedirect("main.jsp"); */
-			}
-		} %>
-		</body>
-
-		
+		</body>	
+		<% } %>
 </html>
