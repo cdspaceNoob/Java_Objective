@@ -6,6 +6,7 @@ function display_now() {
   clock = setInterval(() => {
     root.innerHTML = new Date().toLocaleTimeString();
   }, 1000);
+  //setInterval(함수, ms)
 }
 
 function control_time(flag) {
