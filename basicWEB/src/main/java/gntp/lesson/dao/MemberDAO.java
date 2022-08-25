@@ -10,6 +10,26 @@ import gntp.lesson.util.ConnectionManager;
 import gntp.lesson.vo.MemberVO;
 
 public class MemberDAO {
+	//멤버정보 수정 
+	public boolean updateOne(MemberVO member) throws SQLException {
+		boolean flag = false;
+		String sql = "update member set pwd=?, name=?, email=? where id=?;";
+		
+		Connection con = ConnectionManager.getConnection();
+		PreparedStatement pstmt = con.prepareStatement(sql);
+		pstmt.setString(4, member.getId());
+		pstmt.setString(1, member.getPwd());
+		pstmt.setString(2, member.getName());
+		pstmt.setString(3, member.getEmail());
+		
+		int affectedRow = pstmt.executeUpdate();
+		if(affectedRow > 0) {
+			flag = true;
+		}
+		ConnectionManager.closeConnection(null, pstmt, con);
+		return flag;
+	}//updateOne
+	
 	
 	//전체 조회 
 	public ArrayList<MemberVO> selectAll() throws SQLException{

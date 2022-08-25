@@ -7,14 +7,24 @@ public class BookVO {
 	private String author;
 	private int price;
 	private String date;
+	private String inShelf;
 	
 	/* constructor */
 	public BookVO(int bookNo, String title, String author, int price, String date) {
-		this.bookNo = bookNo;
-		this.title 	= title;
-		this.author = author;
-		this.price 	= price;
-		this.date 	= date;
+		this.bookNo 	= bookNo;
+		this.title 		= title;
+		this.author 	= author;
+		this.price 		= price;
+		this.date 		= date;
+	}
+	
+	public BookVO(int bookNo, String title, String author, int price, String date, String inShelf) {
+		this.bookNo 	= bookNo;
+		this.title 		= title;
+		this.author 	= author;
+		this.price 		= price;
+		this.date 		= date;
+		this.inShelf 	= inShelf;
 	}
 	
 	
@@ -48,6 +58,12 @@ public class BookVO {
 	}
 	public void setDate(String date) {
 		this.date = date;
+	}
+	public String getIsInShelf() {
+		return inShelf;
+	}
+	public void setIsInShelf(String inShelf) {
+		this.date = inShelf;
 	}//getter and setter 
 	
 	@Override

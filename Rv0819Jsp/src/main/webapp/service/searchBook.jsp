@@ -22,10 +22,10 @@
 			<input type="hidden" name="stdNo" value="<%=stdNo %>">
 				<table border=1>
 					<tr>
-						<th colspan=5>도서 조회 시스템</th>
+						<th colspan=7>도서 조회 시스템</th>
 					</tr>
 					<tr>
-						<td colspan=4>
+						<td colspan=6>
 							<input style="text" name="book_name" id="search_book_name" placeholder="제목을 입력하세요">
 						</td>
 						<td>
@@ -38,6 +38,8 @@
 						<td class="result">지은이 </td>
 						<td class="result">가격 </td>
 						<td class="result">등록 날짜 </td>
+						<td class="result">대출 가능 여부</td>
+						<td class="result">옵션</td>
 					</tr>
 					
 					<% if(list != null){
@@ -50,13 +52,15 @@
 						<td><%=vo.getAuthor()%></td>
 						<td><%=vo.getPrice()%></td>
 						<td><%=vo.getDate()%></td>
+						<td><%=vo.getIsInShelf()%></td>
+						<td><a href="../process/borrowBook.jsp?stdNo=<%=stdNo %>&title=<%=vo.getTitle()%>">대출</a></td>
 					</tr>
 					<% 
 						}
 					}
 					%>
 					<tr>
-						<td colspan=5>
+						<td colspan=7>
 							<a href="../service/main.jsp">log out</a>
 						</td>
 					</tr>
