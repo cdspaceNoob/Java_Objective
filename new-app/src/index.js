@@ -4,13 +4,13 @@ import "./index.css";
 // import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 // import Library from "./chapter_03/Library";
-import CommentList from "./chapter_05/CommentList";
+// import CommentList from "./chapter_05/CommentList";
+import Counter from "./chapter_07/Counter";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    {/* <Library /> */}
-    <CommentList />
+    <Counter />
   </React.StrictMode>
 );
 
