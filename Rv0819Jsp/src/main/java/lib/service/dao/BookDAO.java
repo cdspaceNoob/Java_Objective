@@ -71,7 +71,7 @@ public class BookDAO {
 		if(cnt <= 4) {
 			flag = true;
 		}
-		
+		System.out.println(cnt+"권 대출 중입니다");
 		return flag;
 	}//selectCntBorrow()
 	
