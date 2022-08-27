@@ -40,13 +40,24 @@ public class BookDAO {
 	// 도서를 보유 중인지: inshelf값이 Y인지 판단
 	public boolean isInShelf(String title) throws SQLException {
 		boolean flag = false;
-		String rTitle = "%" + title + "%";
-		String sql = "update book set inshelf = 'N' where title=?;";
+		//String rTitle = "%" + title + "%";
+		String sql = "select inshelf from book where inshelf='Y' and title=?;";
+		String yn = null;
 		
 		Connection con = ConnectionManager.getConnection();
 		PreparedStatement pstmt = con.prepareStatement(sql);
-		pstmt.setString(1, rTitle);	
-		
+		pstmt.setString(1, title);	
+		ResultSet rs = pstmt.executeQuery();
+		while(rs.next()) {
+			yn = rs.getString(1);
+			System.out.println("yn is: "+yn);
+			if(yn == "Y") {
+				flag = true;
+			}
+		}
+		rs.close();
+		pstmt.close();
+		con.close();
 		return flag; // 보유 중이면 Y이며 Y는 true를 리턴 
 	}//inInShelf()
 	
