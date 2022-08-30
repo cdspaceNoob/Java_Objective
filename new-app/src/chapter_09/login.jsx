@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Toolbar from "./Toolbar";
 
 function Login(props) {
-  const [isLogedIn, setIsLogedIn] = useState(false);
+  const [isLogedIn, setIsLogedIn] = useState(true);
   const handlerLogin = () => {
     setIsLogedIn(true);
     console.log(isLogedIn);
