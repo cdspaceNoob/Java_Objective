@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 // import AttendenceBook from "./chapter_10/AttendenceBook";
 import NameForm from "./chapter_11/NameForm";
+import FruitSelector from "./chapter_11/Select";
 import "./index.css";
 // import App from "./App";
 import reportWebVitals from "./reportWebVitals";
@@ -10,11 +11,13 @@ import reportWebVitals from "./reportWebVitals";
 // import Counter from "./chapter_07/Counter";
 // import Accomodate from "./chapter_07/Accomodate";
 // import Login from "./chapter_09/login";
+import Calculator from "./chapter_12/Calculator";
+import MainPage from "./chapter_15/MainPage";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <NameForm />
+    <MainPage />
   </React.StrictMode>
 );
 

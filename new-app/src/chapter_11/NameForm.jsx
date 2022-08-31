@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 function NameForm(props) {
-  const [value, setValue] = useState("");
+  const [value, setValue] = useState("요청 사항을 입력하세요");
 
   const handleChange = (event) => {
     setValue(event.target.value);
@@ -15,7 +15,7 @@ function NameForm(props) {
     <form onSubmit={handleSubmit}>
       <label>
         이름:
-        <input type="text" value={value} onChange={handleChange} />
+        <textarea value={value} onChange={handleChange} />
       </label>
       <button type="submit">제출</button>
     </form>
