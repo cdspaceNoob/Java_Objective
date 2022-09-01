@@ -1,4 +1,4 @@
-package gntp.lesson.util;
+package gntp.model2.lesson1.util;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

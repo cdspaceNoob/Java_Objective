@@ -14,19 +14,30 @@
   	<servlet-name>aaa</servlet-name>
   	<servlet-class>gntp.model2.lesson1.MyServlet</servlet-class>
   </servlet>
+  
    <servlet>
-  	<servlet-name>bbb</servlet-name>
-  	<servlet-class>gntp.model2.lesson1.Servlet</servlet-class>
+  	<servlet-name>input</servlet-name>
+  	<servlet-class>gntp.model2.lesson1.Input</servlet-class>
+  </servlet>
+  
+   <servlet>
+  	<servlet-name>list</servlet-name>
+  	<servlet-class>gntp.model2.lesson1.List</servlet-class>
   </servlet>
 
   <servlet-mapping>
   	<servlet-name>aaa</servlet-name>
   	<url-pattern>/aaa</url-pattern>
   </servlet-mapping>
+  
    <servlet-mapping>
-  	<servlet-name>bbb</servlet-name>
-  	<url-pattern>/bbb</url-pattern>
+  	<servlet-name>input</servlet-name>
+  	<url-pattern>/input</url-pattern>
   </servlet-mapping>
 
+   <servlet-mapping>
+  	<servlet-name>list</servlet-name>
+  	<url-pattern>/list</url-pattern>
+  </servlet-mapping>
   
 </web-app>

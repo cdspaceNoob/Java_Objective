@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class Servlet extends HttpServlet{
+public class Input extends HttpServlet{
 	@Override
 	public void init() throws ServletException {
 		// TODO Auto-generated method stub
@@ -31,6 +31,7 @@ public class Servlet extends HttpServlet{
 		// 그러나 서블릿에서는 out을 PrintWiter를 사용하여 만들어줘야 한다 
 		PrintWriter out =  resp.getWriter();
 		out.print("<h1>제목 태그를 직접 out.print()로 출력하는 모습입니다</h1>");
+		out.print("<h1><a href='list'>리스트 불러오기 </a></h1>");
 	}
 	
 	@Override
