@@ -1,6 +1,7 @@
 package gntp.model2.lesson1;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -23,6 +24,11 @@ public class MyServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 //		super.doGet(req, resp);
 		System.out.println("doGet");
+		resp.setContentType("text/html; charset=utf-8");
+		PrintWriter out = resp.getWriter();
+		out.print("<h1>여기입니다</h1>");
+		out.print("<a href='input'>input으로</h1>");
+
 	}
 	
 	@Override

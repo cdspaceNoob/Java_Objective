@@ -1,5 +1,5 @@
-<%@page import="gntp.model2.lesson1.vo.MemberVO"%>
-<%@page import="gntp.model2.lesson1.dao.MemberDAO"%>
+<%@page import="gntp.lesson.vo.MemberVO"%>
+<%@page import="gntp.lesson.dao.MemberDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -13,7 +13,7 @@
 String id = request.getParameter("id");
 MemberVO member = (MemberVO)request.getAttribute("member");
 %>
-<form method="post" action="../logic/process3.jsp">
+<form method="post" action="/Svlt01/server">
 <table>
 <tr>
 	<td>아이디 </td>

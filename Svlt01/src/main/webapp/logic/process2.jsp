@@ -1,5 +1,5 @@
-<%@page import="gntp.model2.lesson1.dao.MemberDAO"%>
-<%@page import="gntp.model2.lesson1.vo.MemberVO"%>
+<%@page import="gntp.lesson.dao.MemberDAO"%>
+<%@page import="gntp.lesson.vo.MemberVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>

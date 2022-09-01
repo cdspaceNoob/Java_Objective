@@ -1,6 +1,6 @@
 <%@page import="gntp.model2.lesson1.util.ConnectionManager"%>
 <%@page import="java.sql.Connection"%>
-<%@page import="gntp.lesson.vo.MemberVO"%>
+<%@page import="gntp.model2.lesson1.vo.MemberVO"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>

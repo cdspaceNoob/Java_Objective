@@ -1,0 +1,86 @@
+package gntp.lesson.servlets;
+
+import java.io.IOException;
+import java.sql.SQLException;
+import java.util.ArrayList;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import gntp.lesson.dao.MemberDAO;
+import gntp.lesson.vo.MemberVO;
+
+public class Server extends HttpServlet{
+	@Override
+	public void init() throws ServletException {
+		// TODO Auto-generated method stub
+		System.out.println("서블릿 파일 진입");
+	}
+	
+	@Override 
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		resp.setContentType("text/html; charset=utf-8");
+		String command = req.getParameter("command");
+		String url = "./member/list.jsp";
+		MemberDAO mdao = new MemberDAO();
+		
+		// 조건에 따라 전체 리스트 조회 페이지 리턴
+		if(command.equals("list")) {
+			try {
+				ArrayList<MemberVO> list = mdao.selectAll();
+				req.setAttribute("list", list);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		// 조건에 따라 개별 정보 조회 페이지 리턴 
+		} else if(command.equals("read")) {
+			String id = req.getParameter("id");
+			MemberVO member = null;
+			try {
+				member = mdao.selectOne(id);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			req.setAttribute("member", member);
+			url = "./member/viewMemberInfo.jsp";
+		}
+		RequestDispatcher rd = req.getRequestDispatcher(url);
+		rd.forward(req, resp);
+	}//doGet
+	
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		
+		MemberDAO mdao = new MemberDAO();
+		String id 	 = req.getParameter("id");
+		String pwd 	 = req.getParameter("pwd");
+		String name  = req.getParameter("name");
+		String email = req.getParameter("email");
+		MemberVO member = new MemberVO(id, pwd, name, email, null);
+		RequestDispatcher rd = req.getRequestDispatcher("./server?command=list");
+		try {
+			boolean flag = mdao.updateOne(member);
+			if(flag){
+				rd.forward(req, resp);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+	}//doPost
+	
+	@Override
+	public void destroy() {
+		// TODO Auto-generated method stub
+		System.out.println("서블릿 파일 종료");
+	}
+}
