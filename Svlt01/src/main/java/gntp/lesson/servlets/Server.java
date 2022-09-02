@@ -31,6 +31,7 @@ public class Server extends HttpServlet{
 		// 조건에 따라 전체 리스트 조회 페이지 리턴
 		if(command.equals("list")) {
 			try {
+				System.out.println("전체 리스트 조회 요청을 처리합니다");
 				ArrayList<MemberVO> list = mdao.selectAll();
 				req.setAttribute("list", list);
 			} catch (SQLException e) {
@@ -39,6 +40,7 @@ public class Server extends HttpServlet{
 			}
 		// 조건에 따라 개별 정보 조회 페이지 리턴 
 		} else if(command.equals("read")) {
+			System.out.println("개별 정보 조회 요청을 처리합니다(수정form)");
 			String id = req.getParameter("id");
 			MemberVO member = null;
 			try {
@@ -49,6 +51,9 @@ public class Server extends HttpServlet{
 			}
 			req.setAttribute("member", member);
 			url = "./member/viewMemberInfo.jsp";
+		} else if(command.equals("create")) {
+			System.out.println("새로운 정보 입력 페이지로 이동합니다");
+			resp.sendRedirect("./memeber/viewMemberInfo?mode=create");
 		}
 		RequestDispatcher rd = req.getRequestDispatcher(url);
 		rd.forward(req, resp);
@@ -57,25 +62,34 @@ public class Server extends HttpServlet{
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		
+		String mode = req.getParameter("mode");
 		MemberDAO mdao = new MemberDAO();
-		String id 	 = req.getParameter("id");
-		String pwd 	 = req.getParameter("pwd");
-		String name  = req.getParameter("name");
-		String email = req.getParameter("email");
-		MemberVO member = new MemberVO(id, pwd, name, email, null);
-		RequestDispatcher rd = req.getRequestDispatcher("./server?command=list");
-		try {
-			boolean flag = mdao.updateOne(member);
-			if(flag){
-				rd.forward(req, resp);
-			}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		if(mode.equals("list")) {
+			System.out.println("Post 요청을 처리합니다.(수정 후 list로)");
+			String id 	 = req.getParameter("id");
+			String pwd 	 = req.getParameter("pwd");
+			String name  = req.getParameter("name");
+			String email = req.getParameter("email");
+			MemberVO member = new MemberVO(id, pwd, name, email, null);
+//			RequestDispatcher rd = req.getRequestDispatcher("server?command=list");
+			try {
+				boolean flag = mdao.updateOne(member);
+				if(flag){
+//					rd.forward(req, resp);
+					resp.sendRedirect("server?command=list");
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} 
+		} else if(mode.equals("create")) {
+			System.out.println("Post 요청을 처리합니다.(새로운 데이터 생성)");
+			String id 	 = req.getParameter("id");
+			String pwd 	 = req.getParameter("pwd");
+			String name  = req.getParameter("name");
+			String email = req.getParameter("email");
 		}
-		
-		
+
 	}//doPost
 	
 	@Override

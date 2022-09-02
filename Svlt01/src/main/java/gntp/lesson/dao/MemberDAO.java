@@ -10,6 +10,14 @@ import gntp.lesson.vo.MemberVO;
 import gntp.lesson.util.ConnectionManager;
 
 public class MemberDAO {
+	
+	//새로운 정보 등록
+	public boolean createOne() {
+		boolean flag = false;
+		
+		return flag;
+	}
+	
 	//멤버정보 수정 
 	public boolean updateOne(MemberVO member) throws SQLException {
 		boolean flag = false;

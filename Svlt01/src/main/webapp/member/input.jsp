@@ -8,5 +8,6 @@
 </head>
 <body>
 <a href="../server?command=list">리스트 불러오기 </a>
+<a href="../server?command=create">새 정보 작성하기 </a>
 </body>
 </html>
