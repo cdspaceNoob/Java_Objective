@@ -24,12 +24,13 @@ public class Server extends HttpServlet{
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		resp.setContentType("text/html; charset=utf-8");
-		String command = req.getParameter("command");
+		
 		String url = "./member/list.jsp";
 		MemberDAO mdao = new MemberDAO();
-		
-		// 조건에 따라 전체 리스트 조회 페이지 리턴
-		if(command.equals("list")) {
+		String command = req.getParameter("command");
+
+		// 조건에 따라 전체 리스트 조회 페이지 리턴, 기본 페이지는 list
+		if(command==null || command.equals("list")) {
 			try {
 				System.out.println("전체 리스트 조회 요청을 처리합니다");
 				ArrayList<MemberVO> list = mdao.selectAll();
@@ -50,10 +51,23 @@ public class Server extends HttpServlet{
 				e.printStackTrace();
 			}
 			req.setAttribute("member", member);
-			url = "./member/viewMemberInfo.jsp";
+			url = "./member/viewMemberInfo.jsp?mode=''";
 		} else if(command.equals("create")) {
 			System.out.println("새로운 정보 입력 페이지로 이동합니다");
-			resp.sendRedirect("./memeber/viewMemberInfo?mode=create");
+			resp.sendRedirect("./member/viewMemberInfo.jsp?mode=create");
+			return;
+		} else if(command.equals("del")) {
+			System.out.println("정보 삭제 기능을 실행합니다");
+			String id = req.getParameter("id");
+			try {
+				mdao.delOne(id);
+				ArrayList<MemberVO> list = mdao.selectAll();
+				System.out.println("삭제 완료되었습니다");
+				req.setAttribute("list", list);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 		RequestDispatcher rd = req.getRequestDispatcher(url);
 		rd.forward(req, resp);
@@ -77,6 +91,8 @@ public class Server extends HttpServlet{
 				if(flag){
 //					rd.forward(req, resp);
 					resp.sendRedirect("server?command=list");
+					System.out.println("처리되었습니다");
+					return;
 				}
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
@@ -88,6 +104,17 @@ public class Server extends HttpServlet{
 			String pwd 	 = req.getParameter("pwd");
 			String name  = req.getParameter("name");
 			String email = req.getParameter("email");
+			try {
+				boolean flag = mdao.createOne(id, pwd, name, email);
+				if(flag==true) {
+					resp.sendRedirect("./server?command=list");
+				} else {
+					System.out.println("servlet Post 작업 실패");
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 
 	}//doPost

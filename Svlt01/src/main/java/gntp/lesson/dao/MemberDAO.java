@@ -10,11 +10,39 @@ import gntp.lesson.vo.MemberVO;
 import gntp.lesson.util.ConnectionManager;
 
 public class MemberDAO {
+	//개별 정보 삭제
+	public boolean delOne(String id) throws SQLException {
+		boolean flag = false;
+		String sql = "delete from member where id=?";
+		Connection con = ConnectionManager.getConnection();
+		PreparedStatement pstmt = con.prepareStatement(sql);
+		pstmt.setString(1, id);
+		
+		int affectedRow = pstmt.executeUpdate();
+		if(affectedRow > 0) {
+			flag = true;
+		}
+		ConnectionManager.closeConnection(null, pstmt, con);
+		return flag;
+	}
 	
 	//새로운 정보 등록
-	public boolean createOne() {
+	public boolean createOne(String id, String pwd, String name, String email) throws SQLException {
 		boolean flag = false;
+		String sql = "insert into member(id, pwd, name, email, joindate) values(?, ?, ?, ?, now())";
 		
+		Connection con = ConnectionManager.getConnection();
+		PreparedStatement pstmt = con.prepareStatement(sql);
+		pstmt.setString(1, id);
+		pstmt.setString(2, pwd);
+		pstmt.setString(3, name);
+		pstmt.setString(4, email);
+		
+		int affectedRow = pstmt.executeUpdate();
+		if(affectedRow > 0) {
+			flag = true;
+		}
+		ConnectionManager.closeConnection(null, pstmt, con);
 		return flag;
 	}
 	
