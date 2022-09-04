@@ -29,6 +29,7 @@
 			%>
 			<table>
 				<tr>
+					<td>선택</td>
 					<td>아이디</td>
 					<td>비밀번호</td>
 					<td>이름</td>
@@ -42,6 +43,7 @@
 				String date = sdf.format(getDate);
 				%>
 				<tr>
+					<td><input type="checkbox" name="checkbox"></td>
 					<td><a href="./server?command=read&id=<%=member.getId()%>"><%=member.getId()%></a></td>
 					<td><%=member.getPwd()%></td>
 					<td><%=member.getName()%></td>
