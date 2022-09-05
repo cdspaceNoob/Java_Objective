@@ -26,4 +26,16 @@
     <!--
     <Manager pathname="" />
     -->
+    <Resource 
+    username="voyager"
+    password="1234"
+    driverClassName="org.mariadb.jdbc.Driver"
+    url="jdbc:mariadb://127.0.0.1:3306/test"
+    name="jdbc/BookDB"
+    type="javax.sql.DataSource"
+    auth="Container"
+    maxTotal="20"
+    maxIdle="10"
+    maxWaitMillis="2000"
+    />
 </Context>

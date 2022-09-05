@@ -7,9 +7,31 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class ConnectionManager {
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
+import javax.sql.DataSource;
+
+public class ConnectionManagerV2 {
 	
 	public static Connection getConnection() {
+		Connection con = null;
+		try {
+			Context initCtx = new InitialContext();
+			Context ctx = (Context)initCtx.lookup("java:/comp/env"); //lookup: 찾기
+			DataSource ds = (DataSource)ctx.lookup("jdbc/BookDB");
+			con = ds.getConnection();
+		} catch (NamingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return con;
+	}
+	
+	public static Connection getConnectionOld() {
 		Connection con = null;
 		String jdbcURL = "jdbc:mariadb://127.0.0.1:3306/test";
 		String driver = "org.mariadb.jdbc.Driver";
