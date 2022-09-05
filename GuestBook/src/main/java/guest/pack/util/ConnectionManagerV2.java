@@ -18,8 +18,9 @@ public class ConnectionManagerV2 {
 		Connection con = null;
 		try {
 			Context initCtx = new InitialContext();
-			Context ctx = (Context)initCtx.lookup("java:/comp/env"); //lookup: 찾기
-			DataSource ds = (DataSource)ctx.lookup("jdbc/BookDB");
+			Context ctx = (Context)initCtx.lookup("java:/comp/env"); //lookup: 컴포넌트중에서 / 환경에 관련된 것 /
+			DataSource ds = (DataSource)ctx.lookup("jdbc/BookDB"); // jdbc관련 / DB접속할 거 -> 종류는 달라질 수 있다, 표현도 자유롭게 할 수 있다 
+			// 데이터 소스라고 하는 것은 매우 다양한 의미를 가질 수 있다
 			con = ds.getConnection();
 		} catch (NamingException e) {
 			// TODO Auto-generated catch block

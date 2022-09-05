@@ -7,16 +7,10 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title> 방명록 </title>
+		<title>방명록 작성</title>
 	</head>
 	<body>
-	<%
-	Date date = new Date();
-	String pattern = "yyyy-MM-dd HH:mm:ss";
-	SimpleDateFormat sdf = new SimpleDateFormat(pattern);
-	String now = sdf.format(date);
-	%>
-		<form action="../BookServlet" method="post">
+		<form action="../BookServlet?command=create" method="post">
 			<table>
 			<tr>
 				<td>제목 : </td>
