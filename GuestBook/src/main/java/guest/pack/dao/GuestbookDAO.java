@@ -87,6 +87,21 @@ public class GuestbookDAO {
 		ConnectionManagerV2.closeConnection(null, pstmt, con);
 		return flag;
 	}
+	
+	// Delete(one)
+	public boolean delOne(int seq) throws SQLException {
+		boolean flag = false;
+		String sql = "delete from guestbook where seq = ?";
+		Connection con = ConnectionManagerV2.getConnection();
+		PreparedStatement pstmt = con.prepareStatement(sql);
+		pstmt.setInt(1, seq);
+		int affectedRow = pstmt.executeUpdate();
+		if(affectedRow > 0) {
+			flag = true;
+		}
+		ConnectionManagerV2.closeConnection(null, pstmt, con);
+		return flag;
+	}
 
 
 

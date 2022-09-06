@@ -10,7 +10,6 @@
 	<body>
 	<% 
 	GuestbookVO book = (GuestbookVO)request.getAttribute("book");
-	System.out.println("book은"+book.getContent());
 	%>
 		<h1>View Update Book</h1>
 		<form action="./BookServlet?command=update" method="post">

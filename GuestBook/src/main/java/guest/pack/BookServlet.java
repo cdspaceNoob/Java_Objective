@@ -99,6 +99,23 @@ public class BookServlet extends HttpServlet{
 			url = "./BookServlet";
 			resp.sendRedirect(url);
 			return;
+		}else if(command.equals("del")) {
+			String seq = req.getParameter("seq");
+			int seqVal = Integer.parseInt(seq);
+			try {
+				boolean flag = dao.delOne(seqVal);
+				if(flag==true) {
+					System.out.println("delete OK");
+				}else {
+					System.out.println("del One FAIL!");
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			url = "./BookServlet";
+			resp.sendRedirect(url);
+			return;
 		}
 		
 		RequestDispatcher rd = req.getRequestDispatcher(url);

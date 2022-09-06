@@ -27,6 +27,7 @@
 				<th>내용</th>
 				<th>작성일</th>
 				<th>조회수</th>
+				<th>옵션</th>
 			</tr>
 			<% for(int i=0; i<list.size(); i++){
 				vo = list.get(i);
@@ -38,6 +39,7 @@
 				<td><%=vo.getContent() %></td>
 				<td><%=vo.getDateTime() %></td>
 				<td><%=vo.getRead_count() %></td>
+				<td><a href="./BookServlet?command=del&seq=<%= vo.getSeq() %>">삭제</a></td>
 			</tr>
 			<% } %>
 		</table>
