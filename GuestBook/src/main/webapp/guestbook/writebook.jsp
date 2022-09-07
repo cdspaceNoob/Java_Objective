@@ -10,7 +10,7 @@
 		<title>방명록 작성</title>
 	</head>
 	<body>
-		<form action="../BookServlet?command=create" method="post">
+		<form action="./BookServlet?command=create" method="post">
 			<table>
 			<tr>
 				<td>제목 : </td>

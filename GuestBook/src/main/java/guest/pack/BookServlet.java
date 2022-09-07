@@ -116,6 +116,8 @@ public class BookServlet extends HttpServlet{
 			url = "./BookServlet";
 			resp.sendRedirect(url);
 			return;
+		}else if(command.equals("viewWriteBook")) {
+			url = "./guestbook/writebook.jsp";
 		}
 		
 		RequestDispatcher rd = req.getRequestDispatcher(url);
