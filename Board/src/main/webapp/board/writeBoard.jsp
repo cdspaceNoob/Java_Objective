@@ -7,13 +7,15 @@
 	<title>Write Board</title>
 </head>
 	<body>
-		<form action="" method="post">
+		<form action="../test?command=create" method="post">
 			<table>
 				<tr>
+					<td>제목</td>
 					<td><input type="text" name="title"></td>
 				</tr>
 				<tr>
-					<td><textarea rows="5" cols="100"></textarea></td>
+					<td>내용</td>
+					<td><textarea rows="5" cols="100" name='content'></textarea></td>
 				</tr>
 				<tr>
 					<td><input type="hidden" name="current_seq" value="a"></td>
