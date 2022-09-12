@@ -2,6 +2,8 @@ package fm.pack.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,6 +11,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import fm.pack.dao.FmDAO;
+import fm.pack.vo.FmVO;
 
 @WebServlet("*.do")
 public class FmController extends HttpServlet{
@@ -23,7 +28,7 @@ public class FmController extends HttpServlet{
 		String command = temp[temp.length-1]; 				// uri의 마지막 요소 확인
 		String url = "board/list.jsp";
 		
-//		PrintWriter out = resp.getWriter();
+		PrintWriter out = resp.getWriter();
 //		out.print("<h1>hi servlet!</h1>");
 //		out.print("<h1>uri ="+uri+"</h1>");
 //		out.print("<h1>url ="+url+"</h1>");
@@ -45,8 +50,20 @@ public class FmController extends HttpServlet{
 //		}
 		
 		if(command.equals("list.do")) {
-			resp.sendRedirect(url);
+			FmDAO fdao = new FmDAO();
+			ArrayList<FmVO> list = null;
+			try {
+				 list = fdao.selectAll();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			req.setAttribute("list", list);
+		}else if(command.equals("test.do")) {
+			out.print("test.do는 정상적으로 작동합니다");
 		}
+		RequestDispatcher rd = req.getRequestDispatcher(url);
+		rd.forward(req, resp);
 	}
 	
 	@Override

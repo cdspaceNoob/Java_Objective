@@ -16,7 +16,7 @@ public class ConnectionManager {
 		Connection con = null;
 		try {
 			Context initCtx = new InitialContext();
-			Context ctx		= (Context)initCtx.lookup("java/comp/env");
+			Context ctx		= (Context)initCtx.lookup("java:/comp/env");
 			DataSource ds	= (DataSource)ctx.lookup("jdbc/mariadb");
 			con = ds.getConnection();
 		} catch (NamingException e) {
