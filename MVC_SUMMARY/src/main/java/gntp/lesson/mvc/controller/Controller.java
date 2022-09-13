@@ -9,7 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import gntp.lesson.mvc.serice.BookService;
 import gntp.lesson.mvc.utils.ConnectionManager;
+import gntp.lesson.mvc.vo.BookVO;
 
 public class Controller extends HttpServlet{
 	
@@ -30,15 +32,31 @@ public class Controller extends HttpServlet{
 		String url 		= "./summary/input.jsp"; 
 		
 		if(command.equals("viewInput.do")) {
-			
+			System.out.println(command);
 		}else if(command.equals("outPut.do")) {
-			Connection con = ConnectionManager.getConnection();
-			if(con!=null) {
-				System.out.println("connected");
-				ConnectionManager.closeConnection(null, null, con);
-			}else {
-				System.out.println("connection fail");
+			// DB에 등록하면서 그거 받아올 거임
+//			Connection con = ConnectionManager.getConnection();
+//			if(con!=null) {
+//				System.out.println(command);
+//				System.out.println("connected");
+//				ConnectionManager.closeConnection(null, null, con);
+//			}else {
+//				System.out.println("connection fail");
+//			}
+			String bookTitle = req.getParameter("bookTitle");
+			String bookAuthor = req.getParameter("bookAuthor");
+			int bookPrice = Integer.parseInt(req.getParameter("bookPrice"));
+			String bookImage = req.getParameter("bookImage");
+			
+			BookVO vo = new BookVO(0, bookTitle, bookAuthor, bookPrice, bookImage, null);
+			
+			BookService service = new BookService();
+			BookVO book = service.registBook(vo);
+			
+			if(book != null) {
+				req.setAttribute("book", book);
 			}
+			req.setAttribute("vo", vo);
 			url = "./summary/output.jsp";
 		}
 		RequestDispatcher rd = req.getRequestDispatcher(url);
