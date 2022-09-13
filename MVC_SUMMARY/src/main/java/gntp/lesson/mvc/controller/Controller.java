@@ -18,7 +18,19 @@ public class Controller extends HttpServlet{
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-	}
+		String uri 		= req.getRequestURI();
+		String[] temp 	= uri.split("/");
+		String command	= temp[temp.length-1];
+		
+		String url 		= "./summary/input.jsp"; 
+		
+		if(command.equals("viewInput.do")) {
+			
+		}else if(command.equals("")) {
+			
+		}
+		
+	}//doPost()
 	
 	@Override
 	public void init() throws ServletException {
