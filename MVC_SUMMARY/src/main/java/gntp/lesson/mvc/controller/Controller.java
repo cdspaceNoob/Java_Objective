@@ -1,11 +1,15 @@
 package gntp.lesson.mvc.controller;
 
 import java.io.IOException;
+import java.sql.Connection;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import gntp.lesson.mvc.utils.ConnectionManager;
 
 public class Controller extends HttpServlet{
 	
@@ -18,6 +22,7 @@ public class Controller extends HttpServlet{
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		// load-on-start이므로 자동으로 호출된다
 		String uri 		= req.getRequestURI();
 		String[] temp 	= uri.split("/");
 		String command	= temp[temp.length-1];
@@ -26,10 +31,18 @@ public class Controller extends HttpServlet{
 		
 		if(command.equals("viewInput.do")) {
 			
-		}else if(command.equals("")) {
-			
+		}else if(command.equals("outPut.do")) {
+			Connection con = ConnectionManager.getConnection();
+			if(con!=null) {
+				System.out.println("connected");
+				ConnectionManager.closeConnection(null, null, con);
+			}else {
+				System.out.println("connection fail");
+			}
+			url = "./summary/output.jsp";
 		}
-		
+		RequestDispatcher rd = req.getRequestDispatcher(url);
+		rd.forward(req, resp);
 	}//doPost()
 	
 	@Override

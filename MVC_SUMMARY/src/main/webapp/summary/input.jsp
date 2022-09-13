@@ -8,5 +8,6 @@
 	</head>
 	<body>
 		<h1>INPUT HERE</h1>
+		<a href="outPut.do">결과 페이지로</a>
 	</body>
 </html>
