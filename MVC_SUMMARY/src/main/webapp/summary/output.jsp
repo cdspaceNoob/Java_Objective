@@ -22,20 +22,20 @@
 	</head>
 	<body>
 	<%
-		BookVO vo = (BookVO)request.getAttribute("vo");
+		BookVO vo = (BookVO)request.getAttribute("book");
 	%>
 		<h1>OUTPUT HERE</h1>
 		<form>
 			<table border=1>
 				<tr>
-					<td rowspan=3><img src="./images/ab.jpeg" alt="" width=400 height=550></td>
-					<td>제목: 	<%="제목" %></td>
+					<td rowspan=3><img src="<%="./images/"+vo.getBook_image() %>" alt="" width=400 height=550></td>
+					<td>제목: 	<%=vo.getBook_title() %></td>
 				</tr>
 				<tr>
-					<td>저자: <%="저자" %></td>
+					<td>저자: <%=vo.getBook_author() %></td>
 				</tr>
 				<tr>
-					<td>가격: <%="가격" %></td>
+					<td>가격: <%=vo.getBook_price()%></td>
 				</tr>
 				<tr>
 					<td colspan=3><input type="submit" value="확인"></td>

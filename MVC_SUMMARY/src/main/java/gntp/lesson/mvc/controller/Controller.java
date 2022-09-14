@@ -61,6 +61,8 @@ public class Controller extends HttpServlet{
 				book = service.registBook(src);
 				if(book != null) {
 					req.setAttribute("book", book);
+				} else {
+					System.out.println("book null");
 				}
 //				req.setAttribute("vo", vo);
 			} catch (Exception e) {
@@ -70,6 +72,8 @@ public class Controller extends HttpServlet{
 			
 
 			url = "./summary/output.jsp";
+		} else if(command.equals("download.do")) {
+			
 		}
 		RequestDispatcher rd = req.getRequestDispatcher(url);
 		rd.forward(req, resp);

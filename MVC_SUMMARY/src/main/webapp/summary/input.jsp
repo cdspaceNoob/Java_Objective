@@ -9,7 +9,7 @@
 	<body>
 		<h1>INPUT HERE</h1>
 		<a href="outPut.do">결과 페이지로</a>
-		<form action="outPut.do" method="post" enctype="multipark/form-data">
+		<form action="outPut.do" method="post" enctype="multipart/form-data">
 			<table>
 				<tr>
 					<td>제목</td>
@@ -31,11 +31,11 @@
 					<td><input type="file" name="bookImage"></td>
 					<td></td>
 				</tr>
-<!-- 				<tr>
+ 				<tr>
 					<td>첨부파일</td>
-					<td><input type="file" name="bookImage"></td>
+					<td><input type="file" name="bookAttatch"></td>
 					<td></td>
-				</tr> -->
+				</tr>
 				<tr>
 					<td><input type="submit" value="등록"></td>
 					<td></td>

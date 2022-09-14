@@ -19,16 +19,17 @@ public class BookService {
 	public BookVO registBook(ServletRequestContext req) throws Exception {
 		BookVO book = null;
 		BookDAO dao = new BookDAO();
-		DiskFileItemFactory factory = new DiskFileItemFactory();	// 그냥 파일 업로드할 때 쓰는 거임(약속)
-		String path = "./images";
-		factory.setRepository(new File(path));						// 그냥 파일 업로드할 때 약속된 거 잡아주는 거임
-		factory.setSizeThreshold(1024*1024);						// 그냥 파일 업로드할 때 약속된 거 잡아주는 거임
-		ServletFileUpload upload = new ServletFileUpload(factory);	// 그냥 파일 업로드할 때 쓰는 거임(약속2)
-		List<FileItem> list = upload.parseRequest(req); 			// Fileitem은 form의 input태그 그 자체 및 속성들을 의미한다
+		DiskFileItemFactory factory = new DiskFileItemFactory();	
+//		String path = "/users/voyager/images";
+		String path = "/users/voyager/eclipse-workspace/eclipse-java/MVC_SUMMARY/src/main/webapp/images";
+		factory.setRepository(new File(path));						
+		factory.setSizeThreshold(1024*1024);						
+		ServletFileUpload upload = new ServletFileUpload(factory);	
+		List<FileItem> list = upload.parseRequest(req); 			
 		book = new BookVO();
 		for(FileItem item : list) {
 			if(item.isFormField()) {
-				String fieldName = item.getFieldName(); 			// FieldName은 form의 name 속성을 의미 
+				String fieldName = item.getFieldName(); 			 
 				if(fieldName.equals("bookTitle")) {
 					book.setBook_title(item.getString("utf-8"));
 				} else if(fieldName.equals("bookAuthor")) {
@@ -39,18 +40,18 @@ public class BookService {
 			} else {
 				String name = item.getFieldName();
 				String temp = item.getName();						// 실제 파일 이름
-				System.out.println(temp);
+				System.out.println("temp:"+temp);
 				// 특수문자(\) 처리 
-				int index = temp.lastIndexOf("\\");
+				int index = temp.lastIndexOf("/");
 				String fileName = temp.substring(index+1);
 				System.out.println(fileName);
 				book.setBook_image(fileName);
 				
-				boolean flag = dao.insertBook(book);
-				if(flag) {
-					File filePath = new File(path+"\\"+fileName);
+//				boolean flag = dao.insertBook(book);
+//				if(flag) {
+					File filePath = new File(path+"/"+fileName);
 					item.write(filePath);
-				}
+//				}
 			}
 		}
 		return book;
