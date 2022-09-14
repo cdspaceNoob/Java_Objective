@@ -48,20 +48,27 @@ public class Controller extends HttpServlet{
 //			}
 			ServletRequestContext src = new ServletRequestContext(req);
 			
-			String bookTitle = req.getParameter("bookTitle");
-			String bookAuthor = req.getParameter("bookAuthor");
-			int bookPrice = Integer.parseInt(req.getParameter("bookPrice"));
-			String bookImage = req.getParameter("bookImage");
-			
-			BookVO vo = new BookVO(0, bookTitle, bookAuthor, bookPrice, bookImage, null);
+//			String bookTitle = req.getParameter("bookTitle");
+//			String bookAuthor = req.getParameter("bookAuthor");
+//			int bookPrice = Integer.parseInt(req.getParameter("bookPrice"));
+//			String bookImage = req.getParameter("bookImage");
+//			
+//			BookVO vo = new BookVO(0, bookTitle, bookAuthor, bookPrice, bookImage, null);
 			
 			BookService service = new BookService();
-			BookVO book = service.registBook(src);
-			
-			if(book != null) {
-				req.setAttribute("book", book);
+			BookVO book;
+			try {
+				book = service.registBook(src);
+				if(book != null) {
+					req.setAttribute("book", book);
+				}
+//				req.setAttribute("vo", vo);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
-			req.setAttribute("vo", vo);
+			
+
 			url = "./summary/output.jsp";
 		}
 		RequestDispatcher rd = req.getRequestDispatcher(url);
