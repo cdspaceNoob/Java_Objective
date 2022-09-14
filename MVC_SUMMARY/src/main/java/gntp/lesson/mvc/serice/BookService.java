@@ -1,9 +1,13 @@
 package gntp.lesson.mvc.serice;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.OutputStream;
 import java.io.UnsupportedEncodingException;
 import java.util.List;
+
+import javax.servlet.http.HttpServletResponse;
 
 import org.apache.tomcat.util.http.fileupload.FileItem;
 import org.apache.tomcat.util.http.fileupload.FileUploadException;
@@ -39,21 +43,61 @@ public class BookService {
 				}
 			} else {
 				String name = item.getFieldName();
-				String temp = item.getName();						// 실제 파일 이름
-				System.out.println("temp:"+temp);
-				// 특수문자(\) 처리 
-				int index = temp.lastIndexOf("/");
-				String fileName = temp.substring(index+1);
-				System.out.println(fileName);
-				book.setBook_image(fileName);
-				
-//				boolean flag = dao.insertBook(book);
-//				if(flag) {
-					File filePath = new File(path+"/"+fileName);
-					item.write(filePath);
-//				}
+				if(name.equals("bookImage")) {
+					String temp = item.getName();						// 실제 파일 이름
+					System.out.println("temp:"+temp);
+					// 특수문자(\) 처리 - windows
+					int index = temp.lastIndexOf("/");
+					String fileName = temp.substring(index+1);
+					System.out.println(fileName);
+					book.setBook_image(fileName);
+					
+//					boolean flag = dao.insertBook(book);
+//					if(flag == true) {
+						File filePath = new File(path+"/"+fileName);
+						item.write(filePath);
+//					}
+					
+				} else if(name.equals("bookAttach")) {
+					String temp = item.getName();						// 실제 파일 이름
+					String download = "/users/voyager/eclipse-workspace/eclipse-java/MVC_SUMMARY/src/main/webapp/download";
+					factory.setRepository(new File(download));
+					System.out.print("download temp: " + download);
+					// 특수문자(\) 처리 - windows
+					int index = temp.lastIndexOf("/");
+					String fileName = temp.substring(index+1);
+					System.out.println("download fileName:" + fileName);
+					book.setBook_attachment(fileName);
+					
+//					boolean flag = dao.insertBook(book);
+//					if(flag == true) {
+						File filePath = new File(download+"/"+fileName);
+						item.write(filePath);
+//					}
+				}
 			}
 		}
 		return book;
 	}//registBook()
+	
+	public void download(String fileName, HttpServletResponse resp) throws IOException {
+		File download = new File("/users/voyager/eclipse-workspace/eclipse-java/MVC_SUMMARY/src/main/webapp/download/" + fileName);
+		fileName = new String(fileName.getBytes("utf-8"), "ISO-8859-1");
+		
+		resp.setContentType("text/html; charset=utf-8");
+		resp.setHeader("Cache-Control", "no-cache");
+		resp.addHeader("Content-Disposition", "attachment; filename=" + fileName);
+		
+		FileInputStream fstream = new FileInputStream(download);
+		OutputStream ostream = resp.getOutputStream();
+		byte[] buffer = new byte[256];
+		
+		int len = 0;
+		
+		while((len=fstream.read(buffer)) != -1){
+			ostream.write(buffer, 0, len);
+		}
+		ostream.close();
+		fstream.close();
+	}
 }

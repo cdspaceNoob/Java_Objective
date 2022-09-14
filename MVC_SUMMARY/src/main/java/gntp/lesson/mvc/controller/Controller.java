@@ -73,10 +73,15 @@ public class Controller extends HttpServlet{
 
 			url = "./summary/output.jsp";
 		} else if(command.equals("download.do")) {
-			
+			String fileName = req.getParameter("fileName");
+			BookService service = new BookService();
+			service.download(fileName, resp);
 		}
-		RequestDispatcher rd = req.getRequestDispatcher(url);
-		rd.forward(req, resp);
+		
+		if(!command.equals("download.do")) {
+			RequestDispatcher rd = req.getRequestDispatcher(url);
+			rd.forward(req, resp);
+		}
 	}//doPost()
 	
 	@Override

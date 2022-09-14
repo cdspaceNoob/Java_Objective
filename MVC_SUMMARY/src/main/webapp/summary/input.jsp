@@ -33,7 +33,7 @@
 				</tr>
  				<tr>
 					<td>첨부파일</td>
-					<td><input type="file" name="bookAttatch"></td>
+					<td><input type="file" name="bookAttach"></td>
 					<td></td>
 				</tr>
 				<tr>
