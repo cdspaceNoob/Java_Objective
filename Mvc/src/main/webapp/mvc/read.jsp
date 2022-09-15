@@ -36,9 +36,9 @@
 			</tr>
 			<tr>
 				<td>첨부파일</td>
-				<% if(book.getBook_attachment()!= null){ %>
+				<% if(book.getBook_attachment() != null){ %>
 				<td>
-					<a href="download.do?fileName=<%=URLEncoder.encode(book.getBook_attachment(), "utf-8" %>"><%=book.getBook_attachment() %></a>
+					<a href="download.do?fileName=<%=URLEncoder.encode(book.getBook_attachment(), "utf-8") %>"><%=book.getBook_attachment() %></a>
 				</td>
 				<% } %>
 			</tr>

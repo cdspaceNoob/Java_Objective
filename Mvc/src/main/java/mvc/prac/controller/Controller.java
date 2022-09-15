@@ -25,6 +25,7 @@ public class Controller extends HttpServlet{
 		String command 	= temp[temp.length-1];
 		
 		String url		= "./mvc/read.jsp";
+		BookService bs  = new BookService();
 		
 		if(command.equals("create.do")) {
 			System.out.println("servlet " + command + " 실행");
@@ -35,7 +36,7 @@ public class Controller extends HttpServlet{
 			 */
 			ServletRequestContext src = new ServletRequestContext(req);
 			
-			BookService bs = new BookService();
+			
 			BookVO book;
 			try {
 				book = bs.insertBook(src);
@@ -58,16 +59,22 @@ public class Controller extends HttpServlet{
 		} else if(command.equals("download.do")) {
 			System.out.println("servlet " + command + " 실행");
 			
+			String fileName = req.getParameter("fileName");
+			bs.download(fileName, resp);
+			
 		} else if(command.equals("list.do")) {
 			System.out.println("servlet " + command + " 실행");
 			
-			BookService bs 			= new BookService();
+			bs = new BookService();
 			ArrayList<BookVO> list  = bs.selectAll();
 			req.setAttribute("list", list);
 			url = "./read.jsp";
 		}
-		RequestDispatcher rd = req.getRequestDispatcher(url);
-		rd.forward(req, resp);
+		if(!command.equals("download.do")) {
+			RequestDispatcher rd = req.getRequestDispatcher(url);
+			rd.forward(req, resp);	
+		}
+		
 	}
 
 	@Override

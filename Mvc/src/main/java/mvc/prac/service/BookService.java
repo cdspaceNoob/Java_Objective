@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.tomcat.util.http.fileupload.FileItem;
@@ -82,7 +83,7 @@ public class BookService {
 					int index = temp.lastIndexOf("/");
 					String attachName = temp.substring(index+1);
 					System.out.println("book_attach로 저장될 내용은: "+attachName);
-					book.setBook_attachment(attachPath);
+					book.setBook_attachment(attachName);
 					
 					File filePath = new File(attachPath+"/"+attachName);
 					item.write(filePath);
@@ -121,12 +122,14 @@ public class BookService {
 	
 	// 다운로드 서비스 실행 
 	public void download(String fileName, HttpServletResponse resp) throws IOException {
+		resp.setContentType("text/html; charset=utf-8");
+		
 		File download = new File("/users/voyager/eclipse-workspace/eclipse-java/Mvc/src/main/webapp/download/"+fileName);
 		fileName = new String(fileName.getBytes("utf-8"), "ISO-8859-1");
 		
-		resp.setContentType("text/html; charset=utf-8");
+		
 		resp.setHeader("Cache-Control", "no-cache");
-		resp.setHeader("Content-Disposition", fileName);
+		resp.addHeader("Content-disposition", "attachment; fileName=" + fileName);
 		
 		FileInputStream fstream = new FileInputStream(download);
 		OutputStream ostream 	= resp.getOutputStream();
