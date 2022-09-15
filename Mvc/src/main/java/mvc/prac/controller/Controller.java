@@ -2,6 +2,7 @@ package mvc.prac.controller;
 
 import java.io.IOException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -34,8 +35,27 @@ public class Controller extends HttpServlet{
 			
 			BookService bs = new BookService();
 			BookVO book;
-			
+			try {
+				book = bs.insertBook(src);
+				if(book != null) {
+					req.setAttribute("book", book);
+					
+					/* BookVO 생성 상태 체크를 위한 print */
+//					System.out.println(book.getBook_image());
+//					System.out.println(book.getBook_author());
+//					System.out.println(book.getBook_title());
+					
+				} else {
+					System.out.println("book null!");
+				}
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			url = "./mvc/create_result.jsp";
 		}
+		RequestDispatcher rd = req.getRequestDispatcher(url);
+		rd.forward(req, resp);
 	}
 
 	@Override
