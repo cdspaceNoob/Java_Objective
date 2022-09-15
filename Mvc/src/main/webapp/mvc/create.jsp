@@ -34,5 +34,6 @@
 				</tr>
 			</table>
 		</form>
+		<a href="list.do">등록된 도서 목록 확인하기</a>
 	</body>
 </html>

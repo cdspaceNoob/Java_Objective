@@ -1,9 +1,20 @@
 package mvc.prac.service;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.OutputStream;
 import java.io.UnsupportedEncodingException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
+
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletResponse;
 
 import org.apache.tomcat.util.http.fileupload.FileItem;
 import org.apache.tomcat.util.http.fileupload.FileUploadException;
@@ -12,9 +23,12 @@ import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
 import org.apache.tomcat.util.http.fileupload.servlet.ServletRequestContext;
 
 import mvc.prac.dao.BookDAO;
+import mvc.prac.utils.ConnectionManager;
 import mvc.prac.vo.BookVO;
 
 public class BookService {
+	
+	// 도서 등록 
 	public BookVO insertBook(ServletRequestContext req) throws Exception {
 		BookVO book = null;
 		BookDAO dao = new BookDAO();
@@ -75,6 +89,56 @@ public class BookService {
 				}
 			}
 		}
+		boolean flag = dao.insertBook(book);
+		if(flag==false) {
+			System.out.println("BookDAO insertBook Fail");
+		}
 		return book;
 	}//insertBook()
+	
+	// 도서 리스트 조회 
+	public ArrayList<BookVO> selectAll() throws SQLException{
+		ArrayList<BookVO> list  = new ArrayList<BookVO>();
+		
+		String sql		 		= "select * from library";
+		Connection con 			= ConnectionManager.getConnection();
+		PreparedStatement stmt  = con.prepareStatement(sql);
+		
+		ResultSet rs = stmt.executeQuery();
+		
+		while(rs.next()) {
+			BookVO book = new BookVO();
+			book.setBook_title(rs.getString("book_title"));
+			book.setBook_author(rs.getString("book_author"));
+			book.setBook_price(rs.getInt("book_price"));
+			book.setBook_image(rs.getString("book_image"));
+			book.setBook_attachment(rs.getString("book_attachment"));
+			list.add(book);
+		}
+		
+		return list;
+	}//selectAll()
+	
+	// 다운로드 서비스 실행 
+	public void download(String fileName, HttpServletResponse resp) throws IOException {
+		File download = new File("/users/voyager/eclipse-workspace/eclipse-java/Mvc/src/main/webapp/download/"+fileName);
+		fileName = new String(fileName.getBytes("utf-8"), "ISO-8859-1");
+		
+		resp.setContentType("text/html; charset=utf-8");
+		resp.setHeader("Cache-Control", "no-cache");
+		resp.setHeader("Content-Disposition", fileName);
+		
+		FileInputStream fstream = new FileInputStream(download);
+		OutputStream ostream 	= resp.getOutputStream();
+		byte[] buffer 			= new byte[256];
+		
+		int len = 0;
+		
+		while((len=fstream.read(buffer)) != -1) {
+			ostream.write(buffer, 0, len);
+		}
+		ostream.close();
+		fstream.close();
+	}//download()
+	
 }
