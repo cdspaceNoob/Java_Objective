@@ -1,6 +1,6 @@
-<%@page import="gntp.model2.lesson1.util.ConnectionManager"%>
-<%@page import="java.sql.Connection"%>
-<%@page import="gntp.model2.lesson1.vo.MemberVO"%>
+<%@page import="java.util.Date"%>
+<%@page import="gntp.model2.util.DateTimeService"%>
+<%@page import="gntp.model2.vo.MemberVO"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -8,43 +8,39 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
-<link rel=>
+<title>Member List</title>
+<link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
 <h1>Member List</h1>
+
+<hr/>
 <%
-Connection con = ConnectionManager.getConnection();
-if(con==null){
-	System.out.println("연결안됨");
-}
-
-ArrayList<MemberVO> list = (ArrayList<MemberVO>)request.getAttribute("list");
-
-
-if(list==null){
-	System.out.println("리스트 없음 ");
-}
-
-
+	request.setCharacterEncoding("UTF-8");
+	ArrayList<MemberVO> list = (ArrayList<MemberVO>)request.getAttribute("list");
 %>
-<table>
+<table style="border: 3px solid lightblue">
+	<tr><th>아이디</th><th>패스워드</th><th>이름</th><th>이메일</th><th>가입일자</th><th>삭제</th></tr>
+<% for(MemberVO member : list){%>	
 	<tr>
-		<td>아이디 </td>
-		<td>비밀번호 </td>
-		<td>이름 </td>
-		<td>이메일 </td>
-		<td>등록일 </td>
-	</tr>
-	<% for(MemberVO member : list){ %>
-	<tr>
-		<td><a href="../logic/process2.jsp?id=<%=member.getId() %>"><%=member.getId() %></a></td>
+		<td>
+			<a href="./YourServlet?command=read&id=<%=member.getId()%>">
+				<%=member.getId() %>
+			</a>
+		</td>
 		<td><%=member.getPwd() %></td>
 		<td><%=member.getName() %></td>
 		<td><%=member.getEmail() %></td>
-		<td><%=member.getJoinDate() %></td>
+		<td><%=DateTimeService.getDateTime(DateTimeService.DATE_ONLY, new Date(member.getJoinDate().getTime()))%></td>
+		<td> 
+			<a href="/member/deleteOne?id=<%=member.getId()%>">
+				<button>탈퇴</button>
+			</a>
+		</td>
 	</tr>
-	<% }%> 
+<%} %>
 </table>
+<hr/>
+	<a href="./YourServlet?command=viewJoinPage"><button>회원 가입</button></a>
 </body>
 </html>

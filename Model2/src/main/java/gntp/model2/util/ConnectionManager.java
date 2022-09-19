@@ -1,4 +1,4 @@
-package gntp.model2.lesson1.util;
+package gntp.model2.util;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -10,7 +10,7 @@ public class ConnectionManager {
 	
 	public static Connection getConnection() {
 		Connection con = null;
-		String jdbcURL = "jdbc:mariadb://127.0.0.1:3306/gntp";
+		String jdbcURL = "jdbc:mariadb://localhost:3306/gntp";
 		String driver = "org.mariadb.jdbc.Driver";
 		String id = "voyager";
 		String pwd = "1234";

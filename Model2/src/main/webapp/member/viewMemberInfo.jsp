@@ -1,44 +1,23 @@
-<%@page import="gntp.model2.lesson1.vo.MemberVO"%>
-<%@page import="gntp.model2.lesson1.dao.MemberDAO"%>
+<%@page import="gntp.model2.vo.MemberVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>view Member Info</title>
 </head>
 <body>
 <%
-String id = request.getParameter("id");
-MemberVO member = (MemberVO)request.getAttribute("member");
+	MemberVO member = (MemberVO)request.getAttribute("member");
 %>
-<form method="post" action="../logic/process3.jsp">
-<table>
-<tr>
-	<td>아이디 </td>
-	<td><input type="text" value="<%=member.getId()%>" name="id" readonly="readonly"></td>
-</tr>
-<tr>
-	<td>비밀번호 </td>
-	<td><input type="text" value="<%=member.getPwd()%>" name="pwd"></td>
-</tr>
-<tr>
-	<td>이름 </td>
-	<td><input type="text" value="<%=member.getName()%>" name="name"></td>
-</tr>
-<tr>
-	<td>이메일 </td>
-	<td><input type="text" value="<%=member.getEmail()%>" name="email"></td>
-</tr>
-<tr>
-	<td>등록일 </td>
-	<td><input type="text" value="<%=member.getJoinDate()%>" name="joinDate" readonly="readonly"></td>
-</tr>
-<tr>
-<td colspan=5><input type="submit" value="수정"></td>
-</tr>
-</table>
+<form action="./YourServlet?command=update" method="post">
+	ID: <input type="text" name="id" readonly="readonly" value="<%=member.getId()%>"><br>
+	PWD: <input type="password" name="pwd" readonly="readonly" value="<%=member.getPwd()%>"><br>
+	NAME: <input type="text" name="name" value="<%=member.getName()%>"><br>
+	EMAIL: <input type="text" name="email" value="<%=member.getEmail()%>"><br>
+	JOINDATE: <input type="text" name="joinDate" value="<%=member.getJoinDate()%>"><br>
+	<input type="submit" value="수정"><br>
 </form>
 </body>
 </html>
