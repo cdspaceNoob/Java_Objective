@@ -33,7 +33,7 @@
 		<td><%=member.getEmail() %></td>
 		<td><%=DateTimeService.getDateTime(DateTimeService.DATE_ONLY, new Date(member.getJoinDate().getTime()))%></td>
 		<td> 
-			<a href="/member/deleteOne?id=<%=member.getId()%>">
+			<a href="/member/deleteOne.do?id=<%=member.getId()%>">
 				<button>탈퇴</button>
 			</a>
 		</td>
