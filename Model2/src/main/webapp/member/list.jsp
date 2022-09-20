@@ -4,6 +4,9 @@
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>    
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:set var="contextPath"  value="${pageContext.request.contextPath}"  />
 <!DOCTYPE html>
 <html>
 <head>
@@ -33,7 +36,7 @@
 		<td><%=member.getEmail() %></td>
 		<td><%=DateTimeService.getDateTime(DateTimeService.DATE_ONLY, new Date(member.getJoinDate().getTime()))%></td>
 		<td> 
-			<a href="/member/deleteOne.do?id=<%=member.getId()%>">
+			<a href="${contextPath}/member/deleteOne.do?id=<%=member.getId()%>">
 				<button>탈퇴</button>
 			</a>
 		</td>

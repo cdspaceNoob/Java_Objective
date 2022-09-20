@@ -153,10 +153,12 @@ public class MemberController extends MultiActionController {
 		String email = request.getParameter("email");
 		
 		ms.registMember(id, pwd, name, email);
-		list = ms.selectAll();
+//		list = ms.selectAll();
 		
-		mav.addObject("list", list);
-		mav.setViewName("list");
+//		mav.addObject("list", list);
+//		mav.setViewName("list");
+		
+		mav = this.showList(request, resp);
 		// setViewName의 파라미터는 jsp파일의 실제 이름이다 
 		
 		return mav;
@@ -167,12 +169,16 @@ public class MemberController extends MultiActionController {
 		pw.print("이거 맞니");
 	}
 	
-	public void deleteOne(HttpServletRequest request, HttpServletResponse response) throws SQLException {
+	public ModelAndView deleteOne(HttpServletRequest request, HttpServletResponse response) throws SQLException {
 		String id 		 = request.getParameter("id");
 		MemberService ms = new MemberService();
+		ModelAndView mav = new ModelAndView();
+		
 		ms.serviceDeleteOne(id);
 		
-		this.showList(request, response);
+		mav = this.showList(request, response);
+		
+		return mav;
 	}
 	
 	public ModelAndView showList(HttpServletRequest request, HttpServletResponse response) {
