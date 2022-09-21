@@ -11,22 +11,11 @@ http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
 http://www.springframework.org/schema/context
 http://www.springframework.org/schema/context/spring-context-3.0.xsd">
 
-<!-- 
-<bean id="simpleUrlController" class="com.spring.ex01.SimpleUrlController"/>
-<bean id="urlMapping"
-  class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
-  <property  name="mappings">
-    <props>
-      <prop key="/test/index.do">simpleUrlController</prop>
-    </props>
-  </property>  
-</bean>
- -->
  	<bean id="viewResolver"
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="viewClass"
 			value="org.springframework.web.servlet.view.JstlView" />
-		<property name="prefix" value="/member/" /> 	<!-- 기본 경로 접두사 -->
+		<property name="prefix" value="/WEB-INF/member/" /> 	<!-- 기본 경로 접두사 -->
 		<property name="suffix" value=".jsp" />			<!-- 파일 형식 접미사 -->
 	</bean>
 
@@ -34,6 +23,7 @@ http://www.springframework.org/schema/context/spring-context-3.0.xsd">
 		class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
 		<property name="mappings">
 			<props>
+			<!-- 경로를 지정해주는 것이므로 유동적일 수 있다. member 폴더를 INF 내부로 옮겼기 때문에 수정 -->
 				<prop key="/member/*.do">memberController</prop> <!-- bean id = memberController -->
 			</props>
 		</property>
@@ -47,6 +37,9 @@ http://www.springframework.org/schema/context/spring-context-3.0.xsd">
 		-->
 			<ref local="userMethodNameResolver" /> 
 		</property>
+		<!-- JDBC 연동을 위한 속성 추가(config 생성하는 맥락임) -->
+		<!--  name인 dao는 field와 동일하게 ref memberDAO는 action-service에 등록된 이름과 동일하게 -->
+		<property name="dao" ref="dao"></property>
 	</bean>
 
 	<bean id="userMethodNameResolver" class="org.springframework.web.servlet.mvc.multiaction.PropertiesMethodNameResolver">
@@ -59,12 +52,15 @@ http://www.springframework.org/schema/context/spring-context-3.0.xsd">
 				<prop key="/member/memberForm.do">memberForm</prop>
 				
 				<!-- key: key와 동일한 경로로 요청이 들어오면 / joinForm: 함수이름을 실행한다 -->
+				
 				<prop key="/member/joinForm.do">join</prop>
 				<prop key="/member/input.do">inputForm</prop>
 				<prop key="/member/list.do">showList</prop>
 				<prop key="/member/insertMember.do">insertMember</prop>
 				<prop key="/member/testForm.do">testForm</prop>
 				<prop key="/member/deleteOne.do">deleteOne</prop>
+				<prop key="/member/updateOne.do">updateOne</prop>
+				<prop key="/member/viewMemberInfo.do">viewOne</prop>
 			</props>
 		</property>
 	</bean>

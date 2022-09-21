@@ -3,7 +3,6 @@
 	<name>Model2</name>
 	<comment></comment>
 	<projects>
-		<project>json-simple-1.1.1</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

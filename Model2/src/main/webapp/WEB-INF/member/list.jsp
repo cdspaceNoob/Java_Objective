@@ -27,7 +27,7 @@
 <% for(MemberVO member : list){%>	
 	<tr>
 		<td>
-			<a href="./YourServlet?command=read&id=<%=member.getId()%>">
+			<a href="${contextPath}/member/viewMemberInfo.do?id=<%=member.getId()%>">
 				<%=member.getId() %>
 			</a>
 		</td>
@@ -44,6 +44,6 @@
 <%} %>
 </table>
 <hr/>
-	<a href="./YourServlet?command=viewJoinPage"><button>회원 가입</button></a>
+	<a href="${contextPath}/member/joinForm.do"><button>회원 가입</button></a>
 </body>
 </html>

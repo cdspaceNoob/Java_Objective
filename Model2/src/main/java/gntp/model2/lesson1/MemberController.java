@@ -13,12 +13,21 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.multiaction.MultiActionController;
 
+import gntp.model2.dao.MemberDAO;
 import gntp.model2.service.MemberService;
 import gntp.model2.vo.MemberVO;
 
 // userMethodNameResolver를 <property>로 사용하기 위해서는 반드시 MultiActionController를 상속받아야 한다. 
 public class MemberController extends MultiActionController {
 	
+	// xml 설정에 따른 DI 주입
+	private MemberDAO dao;
+
+	// xml 설정에 따른 DI 주입
+	public void setDao(MemberDAO memberDAO) {
+		this.dao = memberDAO;
+	}
+
 	// login 원본
 	public ModelAndView login(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		String userID = "";
@@ -132,66 +141,103 @@ public class MemberController extends MultiActionController {
 		mav.setViewName(viewName);
 		
 	    return mav;
-	}
+	}//memberForm();
 	
 	public ModelAndView inputForm(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		ModelAndView mav = new ModelAndView();
 		String viewName = this.getViewName(request);
 		mav.setViewName(viewName);
 		return mav;
-	}
+	}//inputForm()
 	
 	public ModelAndView insertMember(HttpServletRequest request, HttpServletResponse resp) throws Exception {		
 		ArrayList<MemberVO> list = new ArrayList<MemberVO>();
 		
 		ModelAndView mav = new ModelAndView();
-		MemberService ms = new MemberService();
 		
 		String id = request.getParameter("id");
 		String pwd = request.getParameter("pwd");
 		String name = request.getParameter("name");
 		String email = request.getParameter("email");
 		
-		ms.registMember(id, pwd, name, email);
+		dao.insertMember(id, pwd, name, email);
 //		list = ms.selectAll();
 		
 //		mav.addObject("list", list);
 //		mav.setViewName("list");
 		
-		mav = this.showList(request, resp);
-		// setViewName의 파라미터는 jsp파일의 실제 이름이다 
+//		mav = this.showList(request, resp);
+		// setViewName의 파라미터는 jsp파일의 실제 이름이다
+		
+		mav.setViewName("redirect:./list.do");
 		
 		return mav;
-	}
+	}//insertOne()
 	
 	public void testForm(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		PrintWriter pw = response.getWriter();
 		pw.print("이거 맞니");
-	}
+	}// for test
 	
 	public ModelAndView deleteOne(HttpServletRequest request, HttpServletResponse response) throws SQLException {
 		String id 		 = request.getParameter("id");
-		MemberService ms = new MemberService();
 		ModelAndView mav = new ModelAndView();
 		
-		ms.serviceDeleteOne(id);
+		dao.deleteOne(id);
 		
-		mav = this.showList(request, response);
+//		mav = this.showList(request, response);
+		mav.setViewName("redirect:./list.do");
 		
 		return mav;
-	}
+	}//delOne()
 	
-	public ModelAndView showList(HttpServletRequest request, HttpServletResponse response) {
+	public ModelAndView showList(HttpServletRequest request, HttpServletResponse response) throws SQLException {
 		ModelAndView mav = new ModelAndView();
 		
-		MemberService ms = new MemberService();
-		ArrayList<MemberVO> list = ms.selectAll();
+		ArrayList<MemberVO> list = dao.selectAll();
 		
 		mav.addObject("list", list);
 		mav.setViewName("list");
 		
 		return mav;
-	}
+	}//showList()
+	
+	public ModelAndView updateOne(HttpServletRequest request, HttpServletResponse response) {
+		ModelAndView mav = new ModelAndView();
+		MemberVO member = null;
+		
+		String id = request.getParameter("id");
+		String pwd = request.getParameter("pwd");
+		String name = request.getParameter("name");
+		String email = request.getParameter("email");
+		
+		member = new MemberVO(id, pwd, name, email, null);
+		try {
+			dao.updateOne(member);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+//		mav = this.showList(request, response);
+		mav.setViewName("redirect:./list.do");
+		
+		return mav;
+	}//updateOne()
+	
+	public ModelAndView viewOne(HttpServletRequest request, HttpServletResponse response) throws SQLException {
+		ModelAndView mav = new ModelAndView();
+		MemberService ms = new MemberService();
+		MemberVO member  = null;
+		String id 		 = request.getParameter("id");
+		
+		member = dao.selectOne(id);
+		
+		mav.addObject("member", member);
+		mav.setViewName("viewMemberInfo");
+		
+		return mav;
+	}//viewOne()
 	
 	
 }

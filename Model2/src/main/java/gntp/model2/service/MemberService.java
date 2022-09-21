@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.catalina.connector.Request;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -93,4 +94,20 @@ public class MemberService {
 		MemberDAO dao = new MemberDAO();
 		dao.deleteOne(id);
 	}
+	
+	public void updateOne(String id, String pwd, String name, String email) throws SQLException {
+		MemberDAO dao = new MemberDAO();
+		
+		MemberVO member = new MemberVO(id, pwd, name, email, null);
+		
+		dao.updateOne(member);
+	}
+	
+	public MemberVO serviceViewOne(String id) throws SQLException {
+		MemberVO member = null;
+		MemberDAO dao = new MemberDAO();
+		member = dao.selectOne(id);
+		return member;
+	}
+	
 }
